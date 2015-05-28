@@ -24,8 +24,8 @@
 	        	<prop key="add*">PROPAGATION_REQUIRED, -Throwable</prop>
 		        <prop key="del*">PROPAGATION_REQUIRED</prop>
             	<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
-            	<prop key="syncSites">PROPAGATION_REQUIRED,readOnly</prop>
-            	<prop key="doit">PROPAGATION_REQUIRED,readOnly</prop>
+            	<prop key="syncSites">PROPAGATION_REQUIRED</prop>
+            	<prop key="doit">PROPAGATION_REQUIRED</prop>
 	        </props>
 	    </property>
 	    	    

@@ -53,7 +53,7 @@ public class DoJobs implements Job {
 	}
 	
 	protected void doJob(IJob job) throws Throwable {
-		log.debug("Doing: "+job.jobName());
+		if (log.isDebugEnabled()) log.debug("Doing: "+job.jobName());
 		job.doit();
 	}
 	

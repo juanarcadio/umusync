@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
-    <name>UmuJobs</name>
-    <groupId>umu.sakai-contrib.umujobs</groupId>
-    <artifactId>umujobs</artifactId>
-    
-    <organization>
-        <name>Universidad de Murcia</name>
-        <url>http://www.um.es/</url>
-    </organization>
-    <inceptionYear>2011</inceptionYear>
-    <version>2.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+	<modelVersion>4.0.0</modelVersion>
+	<name>UmuJobs</name>
+	<groupId>umu.sakai-contrib.umujobs</groupId>
+	<artifactId>umujobs</artifactId>
+
+	<organization>
+		<name>Universidad de Murcia</name>
+		<url>http://www.um.es/</url>
+	</organization>
+	<inceptionYear>2011</inceptionYear>
+	<packaging>pom</packaging>
 
 	<parent>
 		<artifactId>umusync</artifactId>
@@ -21,66 +21,21 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-    <modules>
-    	<module>api</module>
-        <module>jobs</module>
-        <module>pack</module>
-    </modules>
-    
-    <repositories>
-        <repository>
-            <id>sakai-maven</id>
-            <name>Sakai Maven Repo</name>
-            <layout>default</layout>
-            <url>http://source.sakaiproject.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-                <checksumPolicy>ignore</checksumPolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>sakai-maven2-snapshots</id>
-            <name>Sakai Maven Repo</name>
-            <layout>default</layout>
-            <url>http://source.sakaiproject.org/maven2-snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <checksumPolicy>ignore</checksumPolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>default</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-                <checksumPolicy>ignore</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+	<modules>
+		<module>api</module>
+		<module>jobs</module>
+		<module>pack</module>
+	</modules>
 
-    <!-- handles the management of all related dependencies -->
-    <dependencyManagement>
-        <dependencies>
+	<!-- handles the management of all related dependencies -->
+	<dependencyManagement>
+		<dependencies>
 			<dependency>
-				<groupId>org.opensymphony.quartz</groupId>
+				<groupId>org.quartz-scheduler</groupId>
 				<artifactId>quartz</artifactId>
 				<version>${sakai.quartz.version}</version>
 				<scope>provided</scope>
 			</dependency>
-          </dependencies>
-    </dependencyManagement>
+		</dependencies>
+	</dependencyManagement>
 </project>

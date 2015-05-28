@@ -1,90 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <name>Sakai umusync DAO</name>
-    <groupId>umu.sakai-contrib.umusync</groupId>
-    <artifactId>umusync-dao</artifactId>
-    <organization>
-        <name>Universidad de Murcia</name>
-        <url>http://www.um.es/</url>
-    </organization>
-    <inceptionYear>2011</inceptionYear>
-    <description>umusync interfaces (DAO)</description>
-    <packaging>jar</packaging>
-    <properties>
-        <deploy.target>shared</deploy.target>
-    </properties>
-    
-    <!-- the base is parent -->
-    <parent>
-	    <artifactId>umusync</artifactId>
-	    <groupId>umu.sakai-contrib.umusync</groupId>
-	    <version>2.0-SNAPSHOT</version>
-	    <relativePath>../pom.xml</relativePath>
-    </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>Sakai umusync DAO</name>
+	<artifactId>umusync-dao</artifactId>
+	<organization>
+		<name>Universidad de Murcia</name>
+		<url>http://www.um.es/</url>
+	</organization>
+	<inceptionYear>2011</inceptionYear>
+	<description>umusync interfaces (DAO)</description>
+	<packaging>jar</packaging>
+	<properties>
+		<deploy.target>shared</deploy.target>
+	</properties>
 
-    <dependencies>
-	  <dependency>
-         <groupId>umu.sakai-contrib.umusync</groupId>
-         <artifactId>umusync-api</artifactId>
-      	 <version>${project.version}</version>
-      	 <scope>provided</scope>
-      </dependency>
-      
-      <!-- Sakai dependencies -->
-      <dependency>
-          <groupId>org.sakaiproject.kernel</groupId>
-          <artifactId>sakai-kernel-api</artifactId>
-      </dependency>
+	<!-- the base is parent -->
+	<parent>
+		<artifactId>umusync</artifactId>
+		<groupId>umu.sakai-contrib.umusync</groupId>
+		<version>2.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 
+	<dependencies>
 		<dependency>
-            <groupId>${sakai.hibernate.groupId}</groupId>
-            <artifactId>${sakai.hibernate.artifactId}</artifactId>
-        </dependency>
-
-		<dependency>  
-		    <groupId>${sakai.hibernate.groupId}</groupId>  
-	        <artifactId>hibernate-validator</artifactId>  
-			<scope>provided</scope>  
-		</dependency>  
+			<groupId>umu.sakai-contrib.umusync</groupId>
+			<artifactId>umusync-api</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
-            <groupId>${sakai.spring.groupId}</groupId>
-            <artifactId>${sakai.spring.artifactId}</artifactId>
-        </dependency>
+			<groupId>umu.sakai-contrib.kernel</groupId>
+			<artifactId>sakai-umukernel-api</artifactId>
+		</dependency>
+	</dependencies>
 
-      <dependency>
-          <groupId>umu.sakai-contrib.kernel</groupId>
-          <artifactId>sakai-umukernel-api</artifactId>
-      </dependency>
-
-	  <dependency>
-	  	<groupId>javax.persistence</groupId>
-	  	<artifactId>persistence-api</artifactId>
-	  	<scope>provided</scope>
-	  </dependency>
-	  
-   </dependencies>
-
-   <build>
-	<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-	<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-	  <resources>
-	   <resource>
-	    <directory>${basedir}/src/main/resources</directory>
-	    <filtering>true</filtering>
-	    <includes>
-	     <include>**/*.xml</include>
-	     <include>**/*.properties</include>
-	    </includes>
-	   </resource>
-	   <resource>
-	    <directory>${basedir}/src/test/resources</directory>
-	    <includes>
-	     <include>**/*.xml</include>
-	     <include>**/*.properties</include>
-	    </includes>
-	   </resource>
-	  </resources>
-   </build>
+	<build>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/test/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
 
 </project>

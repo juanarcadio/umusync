@@ -54,17 +54,6 @@
 	   <dispatcher>INCLUDE</dispatcher>
 	</filter-mapping>
 
-	<!-- Error report filter -->
-	<filter>
-		<filter-name>errorReport.filter</filter-name>
-		<filter-class>umu.sakai.jsf.beans.UMUErrorReportFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>errorReport.filter</filter-name>
-		<url-pattern>*.jsf</url-pattern>
-	</filter-mapping>
-
-
 	<!-- Sakai request filter -->
 	<filter>
 		<filter-name>sakai.request</filter-name>

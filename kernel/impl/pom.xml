@@ -8,7 +8,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
   <name>Sakai UMU Kernel Impl</name>
-  <groupId>umu.sakai-contrib.kernel</groupId>
   <artifactId>sakai-umukernel-impl</artifactId>
   <organization>
     <name>Universidad de Murcia</name>
@@ -20,7 +19,6 @@
     <deploy.target />
   </properties>
   <dependencies>
-      <!-- Sakai dependencies -->
       <dependency>
           <groupId>org.sakaiproject.kernel</groupId>
           <artifactId>sakai-kernel-api</artifactId>
@@ -31,25 +29,10 @@
           <version>${project.version}</version>
           <scope>provided</scope>
       </dependency>
-	  <dependency>
-	  	<groupId>javax.persistence</groupId>
-	  	<artifactId>persistence-api</artifactId>
-	  	<scope>provided</scope>
-	  	<version>${umu.persistence.version}</version>
-	  </dependency>
-      <!-- Spring dependencies -->
-	  <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
+      <dependency>
+		   <groupId>${sakai.spring.groupId}</groupId>
+		   <artifactId>spring-aop</artifactId>
       </dependency>
-	<dependency>
-    	<groupId>org.testng</groupId>
-    	<artifactId>testng</artifactId>
-    	<scope>test</scope>
-    	<version>${umu.testng.version}</version>
-    	<classifier>jdk15</classifier>
-  	</dependency>
-	  
   </dependencies>
    <build>
 	<sourceDirectory>${basedir}/src/main/java</sourceDirectory>

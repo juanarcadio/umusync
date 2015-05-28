@@ -10,7 +10,6 @@
   </parent>
   
   <name>Sakai UMU Kernel Component Package</name>
-  <groupId>umu.sakai-contrib.kernel</groupId>
   <artifactId>sakai-umukernel-component</artifactId>
   
   <organization>

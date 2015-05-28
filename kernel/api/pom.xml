@@ -8,7 +8,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
   <name>Sakai UMU Kernel Api</name>
-  <groupId>umu.sakai-contrib.kernel</groupId>
   <artifactId>sakai-umukernel-api</artifactId>
   <organization>
     <name>Universidad de Murcia</name>
@@ -18,25 +17,7 @@
   <packaging>jar</packaging>
   <properties>
     <deploy.target>shared</deploy.target>
-  </properties>
-  <dependencies>
-      <!-- Sakai dependencies -->
-      <dependency>
-          <groupId>org.sakaiproject.kernel</groupId>
-          <artifactId>sakai-kernel-api</artifactId>
-      </dependency>
-      <!-- Spring dependencies -->
-	  <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
-      </dependency>
-      <!-- Hibernate dependencies -->
-		<dependency>
-            <groupId>${sakai.hibernate.groupId}</groupId>
-            <artifactId>${sakai.hibernate.artifactId}</artifactId>
-            <scope>provided</scope>
-        </dependency>
-  </dependencies>
+  </properties> 
    <build>
 	<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 	<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
