@@ -427,7 +427,7 @@ public class SyncManager implements ISyncManager, IJob {
 			String functionsInProperties = this.getServerConfigurationService().getString(IGNORE_FUNCTIONS_PROPERTY, DEFAULT_IGNORE_FUNCTIONS_VALUE);
 			for (String function : functionsInProperties.split(",")) {
 				function = function.trim();
-				if (function != "") {
+				if (!"".equals(function)) {
 					rtn.add(function);
 				}
 			}
@@ -819,22 +819,19 @@ public class SyncManager implements ISyncManager, IJob {
 	private boolean synchronizeRealms(Site s, AuthzGroup baseAuthzGroup,
 			AuthzGroup sectionAuthzGroup, List<String> ignoreFunctions) {
 
+		boolean rtn;
 		// Permisos del site
 		if (baseAuthzGroup == null) {
-			log
-					.info("No tengo baseAuthzGroup para sincronizar permisos para el sitio: "
-							+ s.getId());
-			return false;
+			log.info("No tengo baseAuthzGroup para sincronizar permisos para el sitio: "+ s.getId());
+			rtn = false;
+		} else {
+			rtn = synchronizeAuthzGroup(baseAuthzGroup, s, ignoreFunctions);
 		}
-
-		boolean rtn = synchronizeAuthzGroup(baseAuthzGroup, s, ignoreFunctions);
 
 		// Permisos de las sections
 		Collection<Group> grupos = s.getGroups();
 		if (grupos.size() > 0 && sectionAuthzGroup == null) {
-			log
-					.info("No tengo sectionAuthzGroup para sincronizar permisos para el sitio: "
-							+ s.getId());
+			log.info("No tengo sectionAuthzGroup para sincronizar permisos para el sitio: "+ s.getId());
 			return rtn;
 		}
 		for (Group g : grupos) {
