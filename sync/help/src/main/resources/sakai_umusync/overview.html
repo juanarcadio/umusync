@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title>Sites sync tool: Overview</title>
+<style type="text/css">
+		/* Style for specific inline images */
+		
+		/* Style for specific ordered lists */
+		
+		/* Style for specific table cells */
+</style>
+<link type="text/css" href="/library/skin/tool_base.css" media="all" rel="stylesheet" />
+<link type="text/css" href="/library/skin/default/tool.css" media="all" rel="stylesheet" />
+</head>
+<body>
+<div class="helpBody">
+<h2>Sites sync tool: Overview</h2>
+
+<h3>What it does</h3>
+
+<p>The sites synchronization tool umusync allows you to update permissions and tools.</p>
+
+<h3>Key concepts</h3>
+
+<p><strong>Tasks</strong> In a sync task you must specify which sites you want to update, and which permissions/tools/pages these sites must have. <a href="content.hlp?docId=umusynctasks">How to create, edit or delete tasks</a>.</p>
+
+<p><strong>Filters</strong> The filters are used to select those sites that have certain properties on the site. <a href="content.hlp?docId=umusyncfilters">How to create, edit or delete filters</a>.</p>
+
+<p><strong>Pages</strong> We can design pages with several tools to include them in sites later. <a href="content.hlp?docId=umusyncpages">How to create, edit or delete pages</a>.</p>
+
+<h3>Who can execute a task</h3>
+
+<p>A user with admin role, or a Quartz job</p>
+<ul>
+<li><strong>Admin user</strong>: <p>In the tool, the icon in the last columnn of the tasks list it's used to launch a task execution.</p></li>
+<li><strong>Quartz job</strong>: <p>With the jobs scheduler based on Quartz we can plan the job <i>Sites Sync Job</i>, this job executes all the tasks in the list with active status (<font color="green">green row</font>).</p></li>
+</ul>
+
+</div>
+</body></html>

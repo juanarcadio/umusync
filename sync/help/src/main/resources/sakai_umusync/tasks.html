@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title>How to Create/Edit/Delete tasks</title>
+<style type="text/css">
+		/* Style for specific inline images */
+		
+		/* Style for specific ordered lists */
+		
+		/* Style for specific table cells */
+</style>
+<link type="text/css" href="/library/skin/tool_base.css" media="all" rel="stylesheet" />
+<link type="text/css" href="/library/skin/default/tool.css" media="all" rel="stylesheet" />
+</head>
+<body>
+<div class="helpBody">
+<h2>How to Create/Edit/Delete tasks</h2>
+	<p>In the page shown when entering to the sites synchronization tool there is a tasks list, and here we can make all the actions related to tasks.</p>
+	<p>If we are in another page inside the tool, to return to that page we have to click on the option <i>Tasks</i> in the upper menu.</p>
+
+<h3>Creating a new task</h3>
+	<ol>
+		<li>Click on the option <i>New Task</i></li>
+		<li>Fill in the new task form, consisting in the following fields:
+			<ul>
+				<li><strong>Site type</strong>: It indicates the exact type of the site we want to synchronize, in the pick list the types defined in Sakai are shown, besides, the following options:
+					<ul>
+						<li><i>ALL</i>: It includes all the existing sites.</li>
+						<li><i>Default user site</i>: In Sakai's default configuration, the site type for user sites isn't define, so the type <i>MyWorkspace</i> is not in the pick list, this option includes those user sites which don't have a defined type, for example the user's site <i>admin</i> is included</li>
+						<li><i>All the user site</i>: It include all the user sites, no matter what the user type is.</li> 
+					</ul>
+				</li>
+				<li><strong>Filter</strong>: It shows a list of previously created filters, or the option <i>NONE</i> if you don't want to execute any filter on the site properties. You can take a look to to the section: <a href="content.hlp?docId=umusyncfilters_es">How to create, edit or delete filters</a></li>
+				<li><strong>Sync homepage</strong>: The home page is a special page of a site, in a synchronizing task we have the following options:
+					<ul>
+						<li><i>NOT TO DO</i>: The home page won't be considered.</li>
+						<li><i>Remove homepage</i>: The home page will be deleted from the site, in case it exists.</li>
+						<li><i>-Page name-</i>: The home page must be the same as the one we defined with that name. You can take a look to the section: <a href="content.hlp?docId=umusyncpages_es">How to create, edit or delete pages</a></li>
+						<li><i>sakai.properties</i>: The home page must have exactly the tools defined in the property for home pages of that type sites <i>wsetup.home.toolids.sitetype.*</i>, in case of not existing it checks the property for default sites: <a href="https://confluence.sakaiproject.org/display/DOC/sakai.properties+wsetup.*+(2.x)">wsetup.home.toolids.*</a></li>
+					</ul>
+				</li>
+				<li><strong>Several tools for page</strong>: Activating this option it considers the pages with several tools, if it isn't checked it only cheks the pages with a single tool, this checking is done when we add/delete site tools.</li>
+				<li><strong>Realm template (site)</strong>: realm from which we can copy to synchronize roles and permissions of the site, the identifiers of these realms start with !site.template</li>
+				<li><strong>Realm template (group)</strong>: realm from which we can copy to synchronize roles and permissions of the site groups, the identifiers of these realms start with !group.template</li>
+				<li><strong>Comments</strong>: Brief explanation of what the tasks does, to identify it easily in the tasks list.</li>
+				<li><strong>Ignore (siteId1, siteId2,...)</strong>: The sites whose identifier appears here won't be considered. We can indicate several sites separating them with commas</li>
+				<li><strong>Ignore permissions</strong>: It indicates which permissions won't be considered when synchronizing with the template realms, we have the following options:
+					<ul>
+						<li><i>NOT TO DO</i>: No permission is ignored, the site will have exact copies of the site and/or group template realms.</li>
+						<li><i>sakai.properties</i>: It ignores the permissions indicated in the property <i>umusync.ignore.functions</i>, if it isn't defined if takes the default value of those permissions that generally a teacher can modify, they are the following: annc.all.groups, annc.delete.any, annc.delete.own, annc.new, annc.read, annc.read.drafts, annc.revise.any, annc.revise.own, asn.all.groups, asn.delete, asn.grade, asn.new, asn.read, asn.receive.notifications, asn.revise, asn.share.drafts, asn.submit, calendar.all.groups, calendar.delete.any, calendar.delete.own, calendar.import, calendar.new, calendar.read, calendar.revise.any, calendar.revise.own, calendar.subscribe, chat.delete.any, chat.delete.channel, chat.delete.own, chat.new, chat.new.channel, chat.read, chat.revise.channel, content.all.groups, content.delete.any, content.delete.own, content.hidden, content.new, content.read, content.revise.any, content.revise.own, poll.add, poll.deleteAny, poll.deleteOwn, poll.editAny, poll.editOwn, poll.vote, rwiki.admin, rwiki.create, rwiki.read, rwiki.superadmin, rwiki.update</li>
+						<li><i>CUSTOMIZED</i>: When selecting this option a list with all registered permissions registered in the server will appear, we can check the ones we don't want to be synchronized.</li>
+					</ul>
+				</li>
+				<li><strong>Tools/Pages</strong>: We have a list with all the tools in Sakai, and with all the pages we have defined. You can take a look to the section: <a href="content.hlp?docId=umusyncpages_es">How to create, edit or delete pages</a>. For each page/tool you can select two options:
+					<ul>
+						<li><i>Add</i>
+							<ul>
+								<li><i>Tool</i>: The tool is added in case it doesn't exist in the site.</li>
+								<li><i>Page</i>: If a page with that name exists its tools are synchronized, if not a new page is created with the defined settings.</li>
+							</ul>
+						</li>
+						<li><i>Delete</i>
+							<ul>
+								<li><i>Tool</i>: If the tool exists in the site, then it will be deleted, if the page which have that tool runs out of tools, that page is also deleted.</li>
+								<li><i>Page</i>: It will delete those pages matching the name of the page selected to be deleted.</li>
+							</ul>
+						</li>	
+					</ul>				
+				</li>
+			</ul>
+		</li>		
+		<li>Once we fill in the task data we click on the button <i>Save</i></li>
+	</ol>
+
+<h3>Enable/Disable a task</h3>
+<p>The icon in <font color="red">red</font> or <font color="green">green</font> in the first column of the tasks list is used to indicate the task status, changing the state when it's clicked. When the sites synchronizing job is executed from Quartz scheduler, only enabled tasks in the list will be considered (<font color="green">green row</font>)  .</p>
+<h3>Edit a task</h3>
+<p>The icon (pencil) in the second column of the tasks list is used to edit them.</p>
+
+<h3>Delete a task</h3>
+<p>The icon <font color="red">(red X)</font> in the third column of the tasks list is used to delete them.</p>
+
+<h3>Execute a task</h3>
+<p>The icon in the last column of the tasks list is used to launch a task execution. No matter what its state is. To be able to execute it you must have admin permissions.</p>
+
+</div>
+</body></html>

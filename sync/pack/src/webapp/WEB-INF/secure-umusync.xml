@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+    <bean id="umu.sakai.umusync.api.ISyncManager"
+    	depends-on="umu.sakai.umusync.api.ISyncManagerTarget"
+    	class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" ref="umusync.proxyInterfaces"/>
+        <property name="interceptorNames">
+        	<list>
+        		<value>umu.sakai.umusync.secure.UMUSecureInterceptor</value>
+        	</list>
+        </property>
+        <property name="target"><ref bean="umu.sakai.umusync.api.ISyncManagerTarget"/></property>
+    </bean>
+    
+    <bean id="umu.sakai.umusync.secure.UMUSecureInterceptor" parent="umu.sakai.kernel.api.IUMUSecureInterceptor" init-method="init">
+    	<property name="toolPrefix" value="umusync."/>
+    	<property name="toolPermissions" ref="umusync.permissionList"/>
+    </bean>
+    
+    
+    <!-- Interfaces -->
+    <util:list id="umusync.proxyInterfaces">
+    	<value>umu.sakai.umusync.api.ISyncManager</value>
+    	<value>umu.sakai.umujobs.api.IJob</value>
+    </util:list>
+    
+    
+    <!-- Permisos para esta tool -->
+    <util:list id="umusync.permissionList">
+		<value>VIEW</value>
+	</util:list>
+
+</beans>

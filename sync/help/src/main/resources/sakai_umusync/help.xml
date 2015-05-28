@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+   <bean id="umusyncOverview" class="org.sakaiproject.component.app.help.model.ResourceBean">
+      <property name="docId"><value>umusyncoverview</value></property>
+      <property name="name"><value>umusync Overview</value></property>
+      <property name="location"><value>/sakai_umusync/overview.html</value></property>
+      <property name="defaultForTool"><value>sakai.umusync</value></property>
+   </bean>
+   
+   <bean id="umusyncTasks" class="org.sakaiproject.component.app.help.model.ResourceBean">
+      <property name="docId"><value>umusynctasks</value></property>
+      <property name="name"><value>How to Create/Edit/Delete Tasks</value></property>
+      <property name="location"><value>/sakai_umusync/tasks.html</value></property>
+   </bean>
+
+   <bean id="umusyncFilters" class="org.sakaiproject.component.app.help.model.ResourceBean">
+      <property name="docId"><value>umusyncfilters</value></property>
+      <property name="name"><value>How to Create/Edit/Delete Filters</value></property>
+      <property name="location"><value>/sakai_umusync/filters.html</value></property>
+   </bean>
+
+   <bean id="umusyncPages" class="org.sakaiproject.component.app.help.model.ResourceBean">
+      <property name="docId"><value>umusyncpages</value></property>
+      <property name="name"><value>How to Create/Edit/Delete Pages</value></property>
+      <property name="location"><value>/sakai_umusync/pages.html</value></property>
+   </bean>
+
+   
+   <bean id="org.sakaiproject.api.app.help.TableOfContents" 
+          class="org.sakaiproject.component.app.help.model.TableOfContentsBean">
+      <property name="name"><value>root</value></property>
+      <property name="categories">
+         <list>
+            <bean id="umusyncCategory" class="org.sakaiproject.component.app.help.model.CategoryBean">
+               <property name="name"><value>umusync</value></property>
+               <property name="resources">
+                  <list>
+                    <ref bean="umusyncOverview"/>
+					<ref bean="umusyncTasks"/>
+					<ref bean="umusyncFilters"/>
+					<ref bean="umusyncPages"/>					
+                  </list>
+               </property>
+            </bean>
+           </list>
+         </property>
+       </bean>
+</beans>

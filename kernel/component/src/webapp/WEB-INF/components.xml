@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+     
+    <bean id="umu.sakai.kernel.api.IUMUSecureInterceptor"
+    		depends-on="org.sakaiproject.authz.api.AuthzGroupService,
+    					org.sakaiproject.tool.api.ToolManager,
+    					org.sakaiproject.user.api.UserDirectoryService,
+    					org.sakaiproject.authz.api.FunctionManager,
+    					org.sakaiproject.authz.api.SecurityService" 
+    		class="umu.sakai.kernel.impl.UMUSecureInterceptor">
+    	<property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService"/>
+    	<property name="toolManager" ref="org.sakaiproject.tool.api.ToolManager"/>
+    	<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService"/>
+    	<property name="functionManager" ref="org.sakaiproject.authz.api.FunctionManager"/>
+    	<property name="securityService" ref="org.sakaiproject.authz.api.SecurityService"/>
+    </bean>
+
+	<!-- Captura Anotaciones @Repository (manejo de excepciones) -->     
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	<!-- Captura Anotaciones @PersistenceContext -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    
+</beans>

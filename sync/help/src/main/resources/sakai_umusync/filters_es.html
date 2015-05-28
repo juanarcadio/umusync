@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title>Como Crear/Editar/Borrar filtros</title>
+<style type="text/css">
+		/* Style for specific inline images */
+		
+		/* Style for specific ordered lists */
+		
+		/* Style for specific table cells */
+</style>
+<link type="text/css" href="/library/skin/tool_base.css" media="all" rel="stylesheet" />
+<link type="text/css" href="/library/skin/default/tool.css" media="all" rel="stylesheet" />
+</head>
+<body>
+<div class="helpBody">
+<h2>Como Crear/Editar/Borrar filtros</h2>
+	<p>En la p&aacute;gina que muestra el listado de filtros podemos hacer las acciones de crear, editar o borrar filtros.</p>
+	<p>Para acceder a esta p&aacute;gina debemos pulsar en sobre la opci&oacute;n <i>Filtros</i> en el men&uacute; superior.</p>
+
+<h3>Crear un nuevo filtro</h3>
+	<ol>
+		<li>Pulsar sobre la opci&oacute;n <i>Nuevo Filtro</i></li>
+		<li>Poner un nombre al filtro (no pueden existir dos filtros con el mismo nombre)</li>
+		<li>Establecer la condici&oacute;n del filtro, que puede ser:
+		  <ul>
+			<li><b>existe</b> - Se cumple cuando la propiedad indicada existe en el sitio.</li>
+			<li><b>no existe</b> - Se cumple cuando la propiedad indicada no est&aacute; presente en el sitio.</li>
+			<li><b>= </b>: Se cumple cuando la propiedad indicada tiene el valor indicado.</li>
+			<li><b>!= </b>: Se cumple cuando la propiedad indicada tiene un valor distinto al indicado.</li>
+			<li><b>&lt; </b>: Se cumple cuando la propiedad indicada tiene un valor inferior al indicado (compara alfab&eacute;ticamente).</li>
+			<li><b>&gt; </b>: Se cumple cuando la propiedad indicada tiene un valor superior al indicado (compara alfab&eacute;ticamente).</li>
+			<li><b>matches </b>: Se cumple cuando la propiedad indicada cumple el patr&oacute;n (<a href="http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">expresi&oacute;n regular</a>) indicado en el valor.</li>
+				<ul><li>La condici&oacute;n <i>matches</i> sobre la propiedad reservada <b>SITE_TITLE</b> selecciona aquellos sitios que contienen el valor indicado en su nombre (similar a la b&uacute;squeda de la herramienta Configuraci&oacute;n de sitios).</li></ul>
+		  </ul>
+		</li>
+		<li>Podemos definir varias condiciones en un mismo filtro, de modo que para que se cumpla el filtro deben de cumplirse todas sus condiciones. Para a&ntilde;adir una nueva condici&oacute;n hay que pulsar en el icono (cruz verde) que aparece en el pie de la tabla. Mientras que para eliminar una condici&oacute;n hay que pulsar en el icono (aspa roja) que aparece delante dicha condici&oacute;n.</li>
+		<li>Finalmente pulsamos en el bot&oacute;n <i>A&ntilde;adir filtro</i></li>
+	</ol>
+
+<h3>Editar un filtro</h3>
+<p>El icono (l&aacute;piz) que aparece en la primera columna de la lista de filtros es para editarlos.</p>
+<p>Tenga en cuenta que los filtros que se modifiquen afectar&aacute;n a las tareas ya creadas que lo usen.</p>
+
+<h3>Eliminar un filtro</h3>
+<p>El icono (aspa roja) que aparece en la segunda columna de la lista de filtros es para eliminarlos.</p>
+<p>Tenga en cuenta que los filtros que se eliminen tambi&eacute;n ser&aacute;n eliminados de aquellas tareas que lo est&eacute;n usando.</p>
+
+</div>
+</body></html>

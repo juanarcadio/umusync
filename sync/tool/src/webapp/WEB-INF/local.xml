@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<util:map id="umusyncServices">
+	    <entry key="umu.sakai.umusync.api.ISyncManager"><ref bean="umu.sakai.umusync.api.ISyncManager"/></entry>
+	    <entry key="umu.sakai.kernel.secure.UMUSecureJSP"><ref bean="umu.sakai.umusync.UMUSecureJSP"/></entry>
+	    <entry key="org.sakaiproject.util.ResourceLoader"><ref bean="umu.sakai.umusync.ResourceLoader"/></entry>	    
+	</util:map>
+
+   	<bean id="umu.sakai.umusync.UMUSecureJSP" class="umu.sakai.jsf.beans.UMUSecureJspMap">
+   		<property name="permissionService" ref="umu.sakai.umusync.secure.UMUSecureInterceptor"/>
+   	</bean>
+   	
+   	<bean id="umu.sakai.umusync.ResourceLoader" class="org.sakaiproject.util.ResourceLoader">
+   		<constructor-arg index="0" value="umu.sakai.umusync.tool.bundle.Messages"/>
+   	</bean>
+
+</beans>

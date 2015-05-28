@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title>How to Create/Edit/Delete filters</title>
+<style type="text/css">
+		/* Style for specific inline images */
+		
+		/* Style for specific ordered lists */
+		
+		/* Style for specific table cells */
+</style>
+<link type="text/css" href="/library/skin/tool_base.css" media="all" rel="stylesheet" />
+<link type="text/css" href="/library/skin/default/tool.css" media="all" rel="stylesheet" />
+</head>
+<body>
+<div class="helpBody">
+<h2>How to Create/Edit/Delete Filters</h2>
+<p>In the page which shows the filters list we can make the actions of creating, editing or deleting filters.</p>
+	<p>To access this page we must click on the <i>Filters</i> option in the upper menu.</p>
+
+<h3>Create a new filter</h3>
+	<ol>
+		<li>Click on the <i>New Filter</i> option.</li>
+		<li>Set a name for the filter (two filters with the same name can't exist)</li>
+		<li>Set the filter condition, which can be:
+		  <ul>
+			<li><b>exists</b> - It happens when the indicated property exists in the site.</li>
+			<li><b>not exists</b> - It happens when the indicated property doesn't exist in the site.</li>
+			<li><b>= </b>: It happens when the indicated property has the indicated value.</li>
+			<li><b>!= </b>: It happens when the indicated property has a different value than the indicated one.</li>
+			<li><b>&lt; </b>: It happens when the indicated property has a value smaller than the indicated one (it's compared alphabetically).</li>
+			<li><b>&gt; </b>: It happens when the indicated property has a value greater than the indicated one (it's compared alphabetically).</li>
+			<li><b>matches </b>: It happens when the indicated property matches the pattern (<a href="http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">regular expression</a>) indicated in the value.</li>
+			<ul><li>When using the reserved property named <b>SITE_TITLE</b> with the condition <i>matches</i>, it will select those sites that contain the value in the site title (same as when you search in the Site Manage tool).</li></ul>
+		  </ul>
+		</li>
+		<li>We can define several conditions in the same filter, so the filter is true when all of its conditions are too. To add a new condition you have to click on the icon (green +) in the bottom of the table. To delete a condition you have to click on the icon (red x) beside that condition.</li>
+		<li>Finally we click on the button <i>Add Filter</i></li>
+	</ol>
+
+<h3>Edit a filter</h3>
+<p>The icon (pencil) in the first column of the filters list is for editing them.</p>
+<p>You have to notice that modified filters affect already created tasks that use them.</p>
+
+<h3>Delete a filter</h3>
+<p>The icon (red x) in the second column of the filters list is for deleting them.</p>
+<p>You have to notice that deleted filters will also be deleted in those tasks using them.</p>
+
+</div>
+</body></html>

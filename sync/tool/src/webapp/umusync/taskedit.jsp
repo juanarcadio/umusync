@@ -1,0 +1,176 @@
+<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
+<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
+<%@ taglib uri="http://sakaiproject.org/jsf/sakai" prefix="sakai" %>
+<%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
+<%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
+     
+<jsp:useBean id="msgs" class="org.sakaiproject.util.ResourceLoader" scope="session">
+   <jsp:setProperty name="msgs" property="baseName" 
+   					value="umu.sakai.umusync.tool.bundle.Messages"/>
+</jsp:useBean>
+                 
+<f:view>	
+	<sakai:view title="#{msgs.maintitle}">
+	<sakai:stylesheet path="/css/syncstyle.css"/>			 		 	
+<h:messages/>  		
+		<h:form>
+			<sakai:tool_bar>
+				<sakai:tool_bar_item
+					action="#{SyncBean.saveTask}"
+					value="#{msgs.b_save}"/>
+				<sakai:tool_bar_item	
+					action="task"
+					immediate="true"
+					value="#{msgs.b_rtn}"/>
+   	  		</sakai:tool_bar>
+	   						
+			<table class="detached">
+				<tr>
+					<td>
+						<h:outputText value="#{msgs.sitetype}: "/>
+					</td>
+					<td>			
+						<h:selectOneMenu value="#{SyncBean.task.tipo}" styleClass="fullWidht">
+							<f:selectItems value="#{SyncBean.siteTypes}"/>
+						</h:selectOneMenu>
+					</td> 
+					<td>
+						<h:outputText value="#{msgs.realmp} (#{msgs.site}): " styleClass="barrier"/>
+					</td>
+					<td>			
+						<h:selectOneMenu value="#{SyncBean.task.realmSite}" styleClass="fullWidht">
+							<f:selectItems value="#{SyncBean.siteRealms}"/>
+						</h:selectOneMenu>
+					</td>
+				</tr> 
+				<tr>
+					<td>
+						<h:outputText value="#{msgs.filter}: "/>
+					</td>
+					<td>			
+						<h:selectOneMenu value="#{SyncBean.task.criteria}" 
+								styleClass="fullWidht"
+								converter="#{SyncBean.criteriaConverter}">
+							<f:selectItems value="#{SyncBean.selectCriteria}"/>
+						</h:selectOneMenu>
+					</td>
+					<td>
+						<h:outputText value="#{msgs.realmp} (#{msgs.section}): " styleClass="barrier"/>
+					</td>
+					<td>			
+						<h:selectOneMenu value="#{SyncBean.task.realmSection}" styleClass="fullWidht">
+							<f:selectItems value="#{SyncBean.sectionRealms}"/>
+						</h:selectOneMenu>
+					</td> 
+				</tr> 
+				<tr>
+					<td>
+						<h:outputText value="#{msgs.syncHome}: "/>
+					</td>
+					<td>		
+						<h:selectOneMenu value="#{SyncBean.task.syncHome}" styleClass="fullWidht">
+							<f:selectItems value="#{SyncBean.selectHome}"/>
+						</h:selectOneMenu>
+					</td>
+					<td> 			
+						<h:outputText value="#{msgs.syncInto}:" styleClass="barrier"/>
+					</td>
+					<td>
+						<h:selectBooleanCheckbox value="#{SyncBean.task.syncInto}" />
+					</td>
+				</tr> 
+				<tr>
+					<td>
+						<h:outputText value="#{msgs.comments}:"/>
+					</td>
+					<td colspan="3">
+						<h:inputText id="comments" styleClass="fullWidht"
+								value="#{SyncBean.task.comments}">
+							<f:validator validatorId="SyncJpaValidator"/>
+						</h:inputText>
+						<h:message for="comments" styleClass="error"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputText value="#{msgs.ignore} (siteId1,siteId2,...): "/>
+					</td>
+					<td>
+						<h:inputText id="ignoreSite" styleClass="fullWidht"
+								validator="#{SyncBean.ignoreValidator}" 
+								value="#{SyncBean.task.ignoreSitesById}"/>
+					</td>
+					<td>
+						<h:outputText value="#{msgs.ignoreFunction}: " styleClass="barrier"/>
+					</td>
+					<td>
+						<h:selectOneMenu value="#{SyncBean.task.ignoreFunctionsMode}"
+									styleClass="fullWidht"							
+									onchange="submit()">
+							<f:selectItems value="#{SyncBean.selectFunctionsMode}"/>
+						</h:selectOneMenu>
+					</td>
+				</tr> 
+				<tr>
+					<td colspan="4">						
+						<h:message for="ignoreSite" styleClass="error"/>
+					</td>
+				</tr>				
+				<tr>
+					<td colspan="2" class="top">
+						<rich:dataTable styleClass="centerTable" 
+										value="#{SyncBean.checkBoxOptions}" 
+										var="item">
+							<h:column>
+							  	<f:facet name="header">
+				   					<h:outputText value="#{msgs.tools}/#{msgs.paginas}" />
+								</f:facet>
+							
+								<h:outputText value="#{item.label}"/>								
+							</h:column>
+						
+							<h:column>
+							  	<f:facet name="header">
+				    				<h:outputText value="#{msgs.add}" />
+								</f:facet>					
+								<h:selectBooleanCheckbox  value="#{item.add}"/>
+							</h:column>
+						
+							<h:column>
+							  	<f:facet name="header">
+				    				<h:outputText value="#{msgs.del}" />
+								</f:facet>					
+								<h:selectBooleanCheckbox  value="#{item.del}"/>
+							</h:column>
+						</rich:dataTable>
+					</td>
+					<td colspan="2" class="top">
+						<rich:dataTable styleClass="centerTable" 
+									value="#{SyncBean.functionCheckBox}" var="item" 									
+									rendered="#{SyncBean.task.ignoreFunctionsMode eq 'C'}">
+							<h:column>
+							  	<f:facet name="header">
+				   					<h:outputText value="#{msgs.permissions}" />
+								</f:facet>
+							
+								<h:outputText value="#{item.label}"/>								
+							</h:column>
+							
+							<h:column>
+							  	<f:facet name="header">
+				    				<h:outputText value="#{msgs.ignore}" />
+								</f:facet>					
+								<h:selectBooleanCheckbox  value="#{item.add}"/>
+							</h:column>			
+						</rich:dataTable>
+					</td>
+				</tr>
+			</table>
+			
+			<h:commandButton value="#{msgs.b_save}" action="#{SyncBean.saveTask}" styleClass="botonAzul"/>
+			<h:commandButton value="#{msgs.b_rtn}" action="task" immediate="true"/>
+			
+		</h:form>
+		
+	</sakai:view>
+</f:view>

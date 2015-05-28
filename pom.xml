@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sakaiproject</groupId>
+		<artifactId>master</artifactId>
+		<version>2.9.3</version>	
+	</parent>
+	<name>Umusync Tool</name>
+	<groupId>umu.sakai-contrib</groupId>
+	<artifactId>umusync</artifactId>
+	<version>2.0-SNAPSHOT</version>
+	<organization>
+		<name>Universidad de Murcia</name>
+		<url>http://www.um.es/</url>
+	</organization>
+	<inceptionYear>2011</inceptionYear>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>sync</module>
+		<module>jobs</module>
+		<module>jsf</module>
+		<module>tests</module>
+		<module>kernel</module>
+	</modules>
+	
+	<scm>
+		<connection>scm:svn:https://source.sakaiproject.org/svn/msub/um.es/contrib/umusync/trunk</connection>
+  		<developerConnection>scm:svn:https://source.sakaiproject.org/svn/msub/um.es/contrib/umusync/trunk</developerConnection>
+  	  <url>https://source.sakaiproject.org/svn/master/tags/master-2.9.3/umusync</url>
+  </scm>
+	
+    <repositories>
+        <repository>
+            <id>sakai-maven</id>
+            <name>Sakai Maven Repo</name>
+            <layout>default</layout>
+            <url>http://source.sakaiproject.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>sakai-maven2-snapshots</id>
+            <name>Sakai Maven Repo</name>
+            <layout>default</layout>
+            <url>http://source.sakaiproject.org/maven2-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>default</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+        </repository>
+        <!--
+            This is not needed now that pluto have been released
+            <repository> <id>Pluto Repor</id> <name>Pluto Dev
+            Repository</name> <layout>default</layout>
+            <url>http://people.apache.org/builds/portals-pluto/m2-staging-repository</url>
+            <snapshots> <enabled>false</enabled> </snapshots>
+            </repository>
+        -->
+        <!--
+        <repository>
+            <id>apache-repo</id>
+            <name>apache-repo</name>
+            <layout>default</layout>
+            <url>http://myfaces.zones.apache.org/dist/maven-repository</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        --> 
+    </repositories>
+    
+    <properties>
+    	<!-- Included in master/trunk -->
+    	<sakai.commons-logging.version>1.1.1</sakai.commons-logging.version>		
+    	<sakai.jstl.version>1.1.2</sakai.jstl.version>
+    	<umu.commons.codec.version>1.3</umu.commons.codec.version>
+    	<umu.junit.version>4.11</umu.junit.version>
+    	<umu.xmlapis.version>2.0.2</umu.xmlapis.version>
+    	<!-- Not included in master -->
+    	<umu.commons.collection.version>3.1</umu.commons.collection.version>
+		<umu.commons.beanutils.version>1.7.0</umu.commons.beanutils.version>
+		<umu.commons.digester.version>1.6</umu.commons.digester.version>
+		<umu.commons.validator.version>1.3.0</umu.commons.validator.version>    	
+		<umu.hibernate.annotations.version>3.3.1.GA</umu.hibernate.annotations.version>
+		<umu.hibernate.commons.annotations.version>3.3.0.ga</umu.hibernate.commons.annotations.version>
+    	<umu.hibernate.entitymanager.version>3.3.2.GA</umu.hibernate.entitymanager.version>
+		<umu.hibernate.validator.version>3.0.0.ga</umu.hibernate.validator.version>
+		<umu.jsf.version>1.1.01</umu.jsf.version>
+		<umu.jsp.version>2.0</umu.jsp.version>
+		<umu.myfaces.version>1.1.5</umu.myfaces.version>
+		<umu.oro.version>2.0.8</umu.oro.version>		
+		<umu.persistence.version>1.0</umu.persistence.version>
+		<umu.richfaces.version>3.1.6.CR1</umu.richfaces.version>
+		<umu.taglibs.version>1.0.4</umu.taglibs.version>
+		<umu.testng.version>5.11</umu.testng.version>
+		<umu.tomahawk.version>1.1.6</umu.tomahawk.version>
+    </properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${sakai.commons-logging.version}</version>
+	       		<scope>provided</scope>
+	    	</dependency>
+			<dependency>
+	      		<groupId>org.sakaiproject</groupId>
+	      		<artifactId>sakai-component</artifactId>
+	      		<version>${sakai.version}</version>
+	      		<scope>provided</scope>	      		
+	    	</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<connectionType>developerconnection</connectionType>					
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<tagBase>https://source.sakaiproject.org/svn/msub/um.es/contrib/umusync/tags</tagBase>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<goals>clean install -DcreateChecksum=true</goals>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

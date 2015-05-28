@@ -1,0 +1,101 @@
+.Fila1 {
+	background-color: #E5FFEB;
+}
+
+.Fila2 {
+	background-color: #F7F7DA;
+}
+
+.Fila3 {
+	background-color: #FFE0E0;
+}
+
+.Fila4 {
+	background-color: #FF0060;
+}
+
+.iconColumn {
+	text-align: center;
+	width: 10px;
+}
+
+.nameColumn {
+	text-align: center;
+}
+
+.textColumn {
+	text-align: left;
+}
+
+.testColumn {
+	width: 10px;
+	text-align: left;
+}
+
+.botonAzul {
+	color: blue;
+}
+
+.tablas td {
+	vertical-align: top;
+}
+
+.tabla {
+	width: 50%
+}
+
+.titulo {
+	color:#AE1B2E;
+	font-size:14px;
+}
+
+.imagenlist {
+	position: relative; 
+	top: 4px;
+}
+
+.error {
+	color: red;
+}
+
+.detached {
+	margin-top : 15px;
+	margin-bottom : 15px;
+}
+
+.fullWidht {
+	width: 100%
+}
+
+.barrier {
+	margin-left: 10px;
+}
+
+.top {
+	vertical-align: top;
+	padding-top: 15px;
+}
+
+.centerTable {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.detachedTable {
+	margin-top : 15px;
+	margin-bottom : 15px;
+}
+
+.detachedTable td {
+	vertical-align: top;
+}
+
+.detachedTable ul {
+	list-style:none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.tab {
+	margin-left: 40px;
+}

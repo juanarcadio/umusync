@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title>Como Crear/Editar/Borrar tareas</title>
+<style type="text/css">
+		/* Style for specific inline images */
+		
+		/* Style for specific ordered lists */
+		
+		/* Style for specific table cells */
+</style>
+<link type="text/css" href="/library/skin/tool_base.css" media="all" rel="stylesheet" />
+<link type="text/css" href="/library/skin/default/tool.css" media="all" rel="stylesheet" />
+</head>
+<body>
+<div class="helpBody">
+<h2>Como Crear/Editar/Borrar tareas</h2>
+	<p>En la p&aacute;gina que se muestra al acceder a la herramienta de sincronozaci&oacute;n de sitios aparece un listado de tareas, y aqu&iacute; podemos realizar todas las acciones sobre las tareas.</p>
+	<p>Si estamos en otra p&aacute;gina dentro de la herramienta, para volver a dicha p&aacute;gina debemos pulsar en sobre la opci&oacute;n <i>Tareas</i> en el men&uacute; superior.</p>
+
+<h3>Crear una nueva tarea</h3>
+	<ol>
+		<li>Pulsar sobre la opci&oacute;n <i>Nueva Tarea</i></li>
+		<li>Rellenar el formulario de nueva tarea, que consta de los siguientes campos:
+			<ul>
+				<li><strong>tipo de sitio</strong>: Indica el tipo concreto de sitio que queremos sincronizar, en el desplegable se muestran los tipos de sitios definidos en Sakai, adem&aacute; las siguientes opciones:
+					<ul>
+						<li><i>TODOS</i>: Incluye todos los sitios que existen.</li>
+						<li><i>Sitios de usuario por defecto</i>: En la configuraci&oacute;n por defecto de Sakai, el tipo de sitio para los sitios de usuario no est&aacute; definido, por lo que en el desplegable no aparece el tipo <i>MyWorkspace</i>, esta opci&oacute;n incluye aquellos sitios de usuario que no tienen definido tipo, como por ejemplo, el sitio del usuario <i>&tilde;admin</i> se incluye.</li>
+						<li><i>Todos los sitios de usuario</i>: Incluye todos los sitios de usuarios, no distingue del tipo de usuario.</li> 
+					</ul>
+				</li>
+				<li><strong>Filtro</strong>: Muestra una lista de filtros creados previamente, o la opci&oacute;n <i>NINGUNO</i> si no se desea ejecutar ning&uacute;n filtro sobre las propiedades del sitio. Puede consultar la secci&oacute;n: <a href="content.hlp?docId=umusyncfilters_es">Como crear, editar o borrar filtros</a></li>
+				<li><strong>Modificar Inicio</strong>: La p&aacute;gina de inicio es una p&aacute;gina especial en un sitio, en una tarea de sincronizaci&oacute;n tenemos las siguientes opciones:
+					<ul>
+						<li><i>NO HACERLO</i>: La p&aacute;gina de inicio no ser&aacute; tenida en cuenta.</li>
+						<li><i>Eliminar p&aacute;gina de Inicio</i>: La p&aacute;gina de inicio ser&aacute; eliminada del sitio, en caso de existir.</li>
+						<li><i>-Nombre de una p&aacute;gina-</i>: La p&aacute;gina de inicio debe de ser id&eacute;ntica a la que hemos definido con ese nombre. Puede consultar la secci&oacute;n: <a href="content.hlp?docId=umusyncpages_es">Como crear, editar o borrar p&aacute;ginas</a></li>
+						<li><i>sakai.properties</i>: La p&aacute;gina de inicio debe de tener exactamente las herramientas definidas en la propiedad para las p&aacute;ginas de inicio de los sitios de ese tipo <i>wsetup.home.toolids.tipodesitio.*</i>, en caso de no existir comprueba la propiedad para sitios por defecto: <a href="https://confluence.sakaiproject.org/display/DOC/sakai.properties+wsetup.*+(2.x)">wsetup.home.toolids.*</a></li>
+					</ul>
+				</li>
+				<li><strong>Varias herramientas por p&aacute;gina</strong>: Activando esta opci&oacute;n tiene en cuenta las p&aacute;ginas con varias herramientas, si no est&aacute; marcada comprueba unicamente las p&aacute;ginas con una &uacute;nica herramienta, estas comprobaciones se hacen cuando a&ntilde;adimos/eliminamos herramientas del sitio.</li>
+				<li><strong>Realm plantilla (sitio)</strong>: realm de los que podemos copiar para sincronizar roles y permisos del sitio, el identificador de estos realms comienzan con !site.template</li>
+				<li><strong>Realm plantilla (grupo)</strong>: realm de los que podemos copiar para sincronizar roles y permisos de los grupos del sitio, el identificador de estos realms comienzan con !group.template</li>
+				<li><strong>Comentarios</strong>: Breve explicaci&oacute;n de lo que hace la tarea, para identificarla f&aacute;cilmente en el listado de tareas.</li>
+				<li><strong>Ignorar (siteId1, siteId2,...)</strong>: Los sitios cuyo identificador aparezca aqu&iacute; no ser&aacute;n tenidos en cuenta. Podemos indicar varios sitios separ&aacute;ndolos por comas</li>
+				<li><strong>Ignorar permisos</strong>: Indica que permisos no se tendr&aacute;n en cuenta al sincronizar con los realm plantilla, tenemos las siguientes opciones:
+					<ul>
+						<li><i>NO HACERLO</i>: No ignora ning&uacute;n permiso, el sitio tendr&aacute; copias exactas de los realms plantila de sitio y/o grupo.</li>
+						<li><i>sakai.properties</i>: Ignora los permisos indicados en la propiedad <i>umusync.ignore.functions</i>, en caso de no estar definida toma el valor por defecto de aquellos permisos que generalmente puede modificar un profesor, son los siguientes: annc.all.groups, annc.delete.any, annc.delete.own, annc.new, annc.read, annc.read.drafts, annc.revise.any, annc.revise.own, asn.all.groups, asn.delete, asn.grade, asn.new, asn.read, asn.receive.notifications, asn.revise, asn.share.drafts, asn.submit, calendar.all.groups, calendar.delete.any, calendar.delete.own, calendar.import, calendar.new, calendar.read, calendar.revise.any, calendar.revise.own, calendar.subscribe, chat.delete.any, chat.delete.channel, chat.delete.own, chat.new, chat.new.channel, chat.read, chat.revise.channel, content.all.groups, content.delete.any, content.delete.own, content.hidden, content.new, content.read, content.revise.any, content.revise.own, poll.add, poll.deleteAny, poll.deleteOwn, poll.editAny, poll.editOwn, poll.vote, rwiki.admin, rwiki.create, rwiki.read, rwiki.superadmin, rwiki.update</li>
+						<li><i>PERSONALIZADO</i>: Al seleccionar esta opci&oacute;n nos aparecer&aacute; un listado con todos los permisos registrados en el servidor, podemos marcar cuales queremos que no se sincronicen.</li>
+					</ul>
+				</li>
+				<li><strong>Herramientas/P&aacute;ginas</strong>: Tenemos un listado con todas las herramientas que hay en Sakai, y con todas las p&aacute;ginas que hemos definido. Puede consultar la secci&oacute;n: <a href="content.hlp?docId=umusyncpages_es">Como crear, editar o borrar p&aacute;ginas</a>. Para cada p&aacute;gina/herramienta puede seleccionar dos opciones:
+					<ul>
+						<li><i>A&ntilde;adir</i>
+							<ul>
+								<li><i>Herramienta</i>: Incluye la herramienta si no exist&iacute;a en el sitio.</li>
+								<li><i>P&aacute;gina</i> Si existe una p&aacute;gina con ese nombre sincroniza sus herramientas, si no existe crea una nueva p&aacute;gina con las caracter&iacute;sticas definidas.</li>
+							</ul>
+						</li>
+						<li><i>Eliminar</i>
+							<ul>
+								<li><i>Herramienta</i>: Si existe la herramienta en el sitio la elimina, si la p&aacute;gina que contiene a dicha herramienta se queda sin herramientas, tambi&eacute;n elimina dicha p&aacute;gina.</li>
+								<li><i>P&aacute;gina</i>: Eliminar&aacute; aquellas p&aacute;ginas que coincidan con el nombre de la p&aacute;gina seleccionada para eliminar.</li>
+							</ul>
+						</li>	
+					</ul>				
+				</li>
+			</ul>
+		</li>		
+		<li>Una vez finalizada la cumplimentaci&oacute;n de la tarea pulsamos en el bot&oacute;n <i>Guardar</i></li>
+	</ol>
+
+<h3>Habilitar/Deshabilitar una tarea</h3>
+<p>El icono con un punto de color <font color="red">rojo</font> o <font color="green">verde</font> que aparece en la primera columna de la lista de tareas sirve para indicar en que estado se encuentra la tarea, cambiando de estado al pulsar sobre &eacute;l. Cuando se ejecuta el trabajo de sincronizaci&oacute;n de sitios desde el planificador de Quartz, &uacute;nicamente tendr&aacute; en cuenta aquellas tareas de lista que est&eacute;n habilitadas (<font color="green">fila de color verde</font>)  .</p>
+
+<h3>Editar una tarea</h3>
+<p>El icono (l&aacute;piz) que aparece en la segunda columna de la lista de tareas es para editarlas.</p>
+
+<h3>Eliminar una tarea</h3>
+<p>El icono <font color="red">(aspa roja)</font> que aparece en la tercera columna de la lista de tareas es para eliminarlas.</p>
+
+<h3>Ejecutar una tarea</h3>
+<p>El icono de la &uacute;ltima columna de la lista de tareas sirve para lanzar la ejecuci&oacute;n de un tarea. No importa el estado en el que est&eacute;. Para poder ejecutarla hay que tener permisos de adminitrador.</p>
+
+</div>
+</body></html>
