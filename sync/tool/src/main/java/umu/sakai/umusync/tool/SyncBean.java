@@ -367,6 +367,7 @@ public class SyncBean extends UMUBeanServiceLoader {
 			}
 		}
 		criteriaMap.remove(currentCriteria);
+		criteriaNames.remove(currentCriteria);
 		currentCriteria = null;
 	}
 	
