@@ -11,8 +11,10 @@
                  
 <f:view>	
 	<sakai:view title="#{msgs.maintitle}">
-	<sakai:stylesheet path="/css/syncstyle.css"/>			 		 	
-<h:messages/>  		
+		<sakai:stylesheet path="/css/syncstyle.css"/>		
+		<sakai:script path="/js/checkMainFrameHeight.js"/>
+			 		 	
+		<h:messages/>  		
 		<h:form>
 			<sakai:tool_bar>
 				<sakai:tool_bar_item

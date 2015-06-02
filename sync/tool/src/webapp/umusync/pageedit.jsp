@@ -10,8 +10,9 @@
                  
 <f:view>
 	<sakai:view title="#{msgs.maintitle}">			
-	<sakai:stylesheet path="/css/syncstyle.css"/>
-	<sakai:script path="/js/umusync.js"/>		
+		<sakai:stylesheet path="/css/syncstyle.css"/>
+		<sakai:script path="/js/umusync.js"/>
+		<sakai:script path="/js/checkMainFrameHeight.js"/>		
   		 			
 		<rich:dragIndicator id="indicator" />	  			
 	  			
