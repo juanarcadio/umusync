@@ -27,8 +27,8 @@
 	</modules>
 
 	<scm>
-		<connection>scm:git:https://github.com/juanarcadio/umusync</connection>
-		<developerConnection>scm:git:https://github.com/juanarcadio/umusync</developerConnection>
+		<connection>scm:git:git@github.com:juanarcadio/umusync.git</connection>
+		<developerConnection>scm:git:git@github.com:juanarcadio/umusync.git</developerConnection>
 	</scm>
 
 	<repositories>
