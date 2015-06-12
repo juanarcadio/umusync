@@ -24,7 +24,6 @@
 		<module>jsf</module>
 		<module>tests</module>
 		<module>kernel</module>
-		<module>assembly</module>
 	</modules>
 
 	<scm>
