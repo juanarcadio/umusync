@@ -13,10 +13,14 @@
 	<parent>
 		<artifactId>umusync</artifactId>
 		<groupId>umu.sakai-contrib.umusync</groupId>
-		<version>10-SNAPSHOT</version>
+		<version>11-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-api</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>umu.sakai-contrib.kernel</groupId>
 			<artifactId>sakai-umukernel-api</artifactId>

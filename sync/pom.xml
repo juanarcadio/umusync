@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>umu.sakai-contrib.umusync</groupId>
 	<artifactId>umusync</artifactId>
-	<version>10-SNAPSHOT</version>
+	<version>11-SNAPSHOT</version>
 	<name>Sakai umusync</name>
 	<organization>
 		<name>Universidad de Murcia</name>
@@ -16,7 +16,7 @@
 	<parent>
 		<artifactId>umusync</artifactId>
 		<groupId>umu.sakai-contrib</groupId>
-		<version>10-SNAPSHOT</version>
+		<version>11-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 

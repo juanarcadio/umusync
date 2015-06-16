@@ -122,7 +122,7 @@ public class SyncBean extends UMUBeanServiceLoader {
 	/* Site Types defined in our server */
 	public Collection<SelectItem> getSiteTypes() {
 		ArrayList<SelectItem> rtn = new ArrayList<SelectItem>();
-		rtn.add(new SelectItem("", getTraductor().getString("todos")));
+		rtn.add(new SelectItem("", this.getTraductor().getString("todos")));
 		for (String tipo : this.getSyncManager().getSiteTypes()) {
 			rtn.add(new SelectItem(tipo));
 		}
