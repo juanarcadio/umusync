@@ -13,7 +13,6 @@
 	<sakai:view title="#{msgs.maintitle}">
 	<sakai:stylesheet path="/css/syncstyle.css"/>
 	<sakai:script path="/js/umusync.js"/>
-	<sakai:script path="/js/checkMainFrameHeight.js"/>			 		 	  		
 	  			
 		<h:form id="executeTask">	  						
 			<h:outputText value="#{msgs.tosync}:" styleClass="titulo"/>			
