@@ -61,6 +61,10 @@
 			</snapshots>
 		</repository>
 		<repository>
+			<id>jboss-releases</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+		</repository>	
+		<repository>
 			<id>default</id>
 			<name>Maven Repository Switchboard</name>
 			<layout>default</layout>
