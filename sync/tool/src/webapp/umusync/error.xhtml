@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sakai="http://sakaiproject.org/jsf/sakai"	
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/templates/layout.xhtml">
+
+	<ui:define name="body">	
+
+  		<h:form id="menusakai">
+			<sakai:tool_bar>
+				<sakai:tool_bar_item
+					action="task"
+					value="#{msgs.tareas}"/>
+				<sakai:tool_bar_item
+					action="criteria"
+					value="#{msgs.criteria}"/>
+				<sakai:tool_bar_item	
+					action="page"
+					value="#{msgs.paginas}"/>		
+   	  		</sakai:tool_bar>
+	  	</h:form>
+			  			
+		<h1>ERROR</h1>
+		<h:outputText value="#{msgs.error}: "/>
+		<br/><br/>
+		
+		<rich:list var="titulo" value="#{SyncBean.errores}">
+		    <h:outputText value="#{titulo}"/>
+			<rich:list var="error" value="#{SyncBean.errorList}">
+				<f:param value="#{titulo}" name="titulo"/>
+				<h:outputText value="#{error}"/>
+			</rich:list>
+		</rich:list>
+		 
+	</ui:define>
+</ui:composition>	

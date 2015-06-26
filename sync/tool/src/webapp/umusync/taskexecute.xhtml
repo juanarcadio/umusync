@@ -1,18 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@ taglib uri="http://sakaiproject.org/jsf/sakai" prefix="sakai" %>
-<%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
-<%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sakai="http://sakaiproject.org/jsf/sakai"	
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/templates/layout.xhtml">
 
-<jsp:useBean id="msgs" class="org.sakaiproject.util.ResourceLoader" scope="session">
-	<jsp:setProperty name="msgs" property="baseName"
-		value="umu.sakai.umusync.tool.bundle.Messages" />
-</jsp:useBean>
-
-<f:view>
-	<sakai:view title="#{msgs.maintitle}">
-	<sakai:stylesheet path="/css/syncstyle.css"/>
-	<sakai:script path="/js/umusync.js"/>
+	<ui:define name="body">	
 	  			
 		<h:form id="executeTask">	  						
 			<h:outputText value="#{msgs.tosync}:" styleClass="titulo"/>			
@@ -58,34 +53,34 @@
 				<h:outputText value="#{SyncBean.task.syncInto}" styleClass="tab" />
 
 				<h:outputText value="#{msgs.addt}: " />
-				<rich:dataList rendered="#{not empty SyncBean.task.toolsToAdd}"
+				<rich:list rendered="#{not empty SyncBean.task.toolsToAdd}"
 					value="#{SyncBean.task.toolsToAdd}" var="addt">
 					<h:outputText value="#{addt.string}" />
-				</rich:dataList>
+				</rich:list>
 				<h:outputText rendered="#{empty SyncBean.task.toolsToAdd}"
 					value="#{msgs.ninguna}" styleClass="tab" />
 
 				<h:outputText value="#{msgs.delt}: " />
-				<rich:dataList rendered="#{not empty SyncBean.task.toolsToDel}"
+				<rich:list rendered="#{not empty SyncBean.task.toolsToDel}"
 					value="#{SyncBean.task.toolsToDel}" var="delt">
 					<h:outputText value="#{delt.string}" />
-				</rich:dataList>
+				</rich:list>
 				<h:outputText rendered="#{empty SyncBean.task.toolsToDel}"
 					value="#{msgs.ninguna}" styleClass="tab" />
 
 				<h:outputText value="#{msgs.addp}: " />
-				<rich:dataList rendered="#{not empty SyncBean.task.pagesToAdd}"
+				<rich:list rendered="#{not empty SyncBean.task.pagesToAdd}"
 					value="#{SyncBean.task.pagesToAdd}" var="addp">
 					<h:outputText value="#{addp.name}" />
-				</rich:dataList>
+				</rich:list>
 				<h:outputText rendered="#{empty SyncBean.task.pagesToAdd}"
 				 	value="#{msgs.ninguna}" styleClass="tab" />
 
 				<h:outputText value="#{msgs.delp}: " />
-				<rich:dataList rendered="#{not empty SyncBean.task.pagesToDel}"
+				<rich:list rendered="#{not empty SyncBean.task.pagesToDel}"
 					value="#{SyncBean.task.pagesToDel}" var="delp">
 					<h:outputText value="#{delp.string}" />
-				</rich:dataList>
+				</rich:list>
 				<h:outputText rendered="#{empty SyncBean.task.pagesToDel}"
 					value="#{msgs.ninguna}" styleClass="tab" />
 
@@ -93,10 +88,10 @@
 				<h:outputText rendered="#{SyncBean.task.ignoreFunctionsMode ne 'C'}"
 					value="#{SyncBean.task.ignoreFunctionsMode}" 
 					converter="#{SyncBean.ignoreFunctionsModeConverter}" styleClass="tab"/>
-				<rich:dataList rendered="#{SyncBean.task.ignoreFunctionsMode eq 'C' and not empty SyncBean.task.ignoredFunctions}"
+				<rich:list rendered="#{SyncBean.task.ignoreFunctionsMode eq 'C' and not empty SyncBean.task.ignoredFunctions}"
 					value="#{SyncBean.task.ignoredFunctions}" var="permiso">				
 					<h:outputText value="#{permiso.string}"/>
-				</rich:dataList>
+				</rich:list>
 				<h:outputText rendered="#{SyncBean.task.ignoreFunctionsMode eq 'C' and empty SyncBean.task.ignoredFunctions}"
 					value="#{msgs.ninguno}" styleClass="tab" />
 			</h:panelGrid>
@@ -128,5 +123,5 @@
 				value="#{SyncBean.informe}" />
 		</h:form>
 		
-	</sakai:view>
-</f:view>
+	</ui:define>
+</ui:composition>	

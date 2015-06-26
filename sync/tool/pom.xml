@@ -16,6 +16,19 @@
 		<version>11-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+	        	<groupId>org.richfaces</groupId>
+	            <artifactId>richfaces-bom</artifactId>
+	            <version>${umu.richfaces.version}</version>
+	            <scope>import</scope>
+	            <type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.sakaiproject.kernel</groupId>
@@ -36,95 +49,98 @@
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- dependencies para JSF! -->
 		<dependency>
-			<groupId>org.sakaiproject.jsf</groupId>
-			<artifactId>jsf-tool</artifactId>
+            <groupId>javax.faces</groupId>
+            <artifactId>javax.faces-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
 		</dependency>
+		<!-- Sakai JSF -->
 		<dependency>
 			<groupId>org.sakaiproject.jsf</groupId>
 			<artifactId>jsf-app</artifactId>
+			<version>${sakai.version}</version>
+			<classifier>jsf2</classifier>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.faces</groupId>
+					<artifactId>javax.faces-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.faces</groupId>
 					<artifactId>jsf-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.faces</groupId>
+					<artifactId>jsf-impl</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.sakaiproject.jsf</groupId>
-			<artifactId>myfaces-widgets-depend</artifactId>
+			<artifactId>jsf-tool</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.sakaiproject.jsf</groupId>
+			<artifactId>jsf-widgets-sun-depend</artifactId>
 			<type>pom</type>
 			<exclusions>
 				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>jsp-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<!-- MyFaces JSF dependencies -->
-		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-api</artifactId>
-			<version>${umu.myfaces.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-impl</artifactId>
-			<version>${umu.myfaces.version}</version>
-		</dependency>
-
-		<!-- RichFaces libraries -->
-		<dependency>
-			<groupId>org.richfaces.framework</groupId>
-			<artifactId>richfaces-api</artifactId>
-			<version>${umu.richfaces.version}</version>
-			<exclusions>
-				<exclusion>
-					<!-- using myfaces instead -->
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces.framework</groupId>
-			<artifactId>richfaces-impl</artifactId>
-			<version>${umu.richfaces.version}</version>
-			<exclusions>
-				<exclusion>
-					<!-- using myfaces instead -->
 					<groupId>javax.faces</groupId>
 					<artifactId>jsf-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<!-- using myfaces instead -->
 					<groupId>javax.faces</groupId>
 					<artifactId>jsf-impl</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.richfaces.ui</groupId>
-			<artifactId>richfaces-ui</artifactId>
-			<version>${umu.richfaces.version}</version>
-			<exclusions>
-				<exclusion>
-					<!-- using myfaces instead -->
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<!-- using myfaces instead -->
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-impl</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
+        <dependency>
+            <groupId>org.richfaces.ui</groupId>
+            <artifactId>richfaces-components-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.richfaces.core</groupId>
+            <artifactId>richfaces-core-impl</artifactId>
+        </dependency>
+		
 		<!-- TESTS -->
 		<dependency>
 			<groupId>org.testng</groupId>

@@ -1,98 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#umusync#tasklist.jsp"
-  PATH="/umusync/tasklist.jsp" SHAPE="784,336,50,89" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#umusync#tasklist.jsp:0" NAME="item"
-   PATH="/umusync/tasklist.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="edit::#umusync#taskedit.jsp" NAME="output"
-    PATH="/umusync/taskedit.jsp" SHAPE="-1,24"
-    TARGET="rules:#umusync#taskedit.jsp" TITLE="edit" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="exec::#umusync#taskexecute.jsp"
-    NAME="output4" PATH="/umusync/taskexecute.jsp"
-    SHAPE="833,384,976,384,976,432,983,432"
-    TARGET="rules:#umusync#taskexecute.jsp" TITLE="exec" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="page::#umusync#pagelist.jsp" NAME="output3"
-    PATH="/umusync/pagelist.jsp"
-    SHAPE="833,400,920,400,920,456,48,456,48,56,79,56"
-    TARGET="rules:#umusync#pagelist.jsp" TITLE="page" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="criteria::#umusync#criterialist.jsp"
-    NAME="output2" PATH="/umusync/criterialist.jsp"
-    SHAPE="833,416,888,416,888,440,336,440,336,176,415,176"
-    TARGET="rules:#umusync#criterialist.jsp" TITLE="criteria" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#umusync#criterialist.jsp"
-  PATH="/umusync/criterialist.jsp" SHAPE="416,168,50,73" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#umusync#criterialist.jsp:0" NAME="item"
-   PATH="/umusync/criterialist.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="edit::#umusync#criteriaedit.jsp"
-    NAME="output" PATH="/umusync/criteriaedit.jsp" SHAPE="-1,16"
-    TARGET="rules:#umusync#criteriaedit.jsp" TITLE="edit" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="task::#umusync#tasklist.jsp" NAME="output2"
-    PATH="/umusync/tasklist.jsp" SHAPE="-1,24"
-    TARGET="rules:#umusync#tasklist.jsp" TITLE="task" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="page::#umusync#pagelist.jsp" NAME="output3"
-    PATH="/umusync/pagelist.jsp"
-    SHAPE="465,232,528,232,528,264,64,264,64,56,79,56"
-    TARGET="rules:#umusync#pagelist.jsp" TITLE="page" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#umusync#pagelist.jsp"
-  PATH="/umusync/pagelist.jsp" SHAPE="80,48,50,73" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#umusync#pagelist.jsp:0" NAME="item"
-   PATH="/umusync/pagelist.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="edit::#umusync#pageedit.jsp" NAME="output"
-    PATH="/umusync/pageedit.jsp" SHAPE="-1,16"
-    TARGET="rules:#umusync#pageedit.jsp" TITLE="edit" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="criteria::#umusync#criterialist.jsp"
-    NAME="output2" PATH="/umusync/criterialist.jsp"
-    SHAPE="129,96,240,96,240,176,415,176"
-    TARGET="rules:#umusync#criterialist.jsp" TITLE="criteria" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="task::#umusync#tasklist.jsp" NAME="output3"
-    PATH="/umusync/tasklist.jsp" SHAPE="129,112,208,112,208,344,783,344"
-    TARGET="rules:#umusync#tasklist.jsp" TITLE="task" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#umusync#taskexecute.jsp"
-  PATH="/umusync/taskexecute.jsp" SHAPE="984,424,50,41" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#umusync#taskexecute.jsp:0" NAME="item"
-   PATH="/umusync/taskexecute.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="rtn::#umusync#tasklist.jsp" NAME="output"
-    PATH="/umusync/tasklist.jsp"
-    SHAPE="1033,456,1144,456,1144,264,736,264,736,344,783,344"
-    TARGET="rules:#umusync#tasklist.jsp" TITLE="rtn" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#umusync#error.jsp" PATH="/umusync/error.jsp"
   SHAPE="48,512,50,25" model-entity="JSFProcessGroup" persistent="true"/>
- <PROCESS-ITEM NAME="rules:#umusync#taskedit.jsp"
-  PATH="/umusync/taskedit.jsp" SHAPE="984,360,50,41" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#umusync#taskedit.jsp:0" NAME="item"
-   PATH="/umusync/taskedit.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="task::#umusync#tasklist.jsp" NAME="output"
-    PATH="/umusync/tasklist.jsp"
-    SHAPE="1033,392,1120,392,1120,288,760,288,760,344,783,344"
-    TARGET="rules:#umusync#tasklist.jsp" TITLE="task" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#umusync#tasklist.xhtml"
+  PATH="/umusync/tasklist.xhtml" SHAPE="64,193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#umusync#tasklist.xhtml:0" NAME="item"
+   PATH="/umusync/tasklist.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#umusync#taskedit.xhtml" NAME="output"
+    PATH="/umusync/taskedit.xhtml"
+    TARGET="rules:#umusync#taskedit.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="exec::#umusync#taskexecute.xhtml"
+    NAME="output1" PATH="/umusync/taskexecute.xhtml"
+    TARGET="rules:#umusync#taskexecute.xhtml" TITLE="exec" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="page::#umusync#pagelist.xhtml"
+    NAME="output2" PATH="/umusync/pagelist.xhtml"
+    TARGET="rules:#umusync#pagelist.xhtml" TITLE="page" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="criteria::#umusync#criterialist.xhtml"
+    NAME="output3" PATH="/umusync/criterialist.xhtml"
+    TARGET="rules:#umusync#criterialist.xhtml" TITLE="criteria" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#umusync#criteriaedit.jsp"
-  PATH="/umusync/criteriaedit.jsp" SHAPE="640,192,50,41" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#umusync#criteriaedit.jsp:0" NAME="item"
-   PATH="/umusync/criteriaedit.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="criteria::#umusync#criterialist.jsp"
-    NAME="output" PATH="/umusync/criterialist.jsp"
-    SHAPE="689,224,824,224,824,128,384,128,384,176,415,176"
-    TARGET="rules:#umusync#criterialist.jsp" TITLE="criteria" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#umusync#taskedit.xhtml"
+  PATH="/umusync/taskedit.xhtml" SHAPE="320,209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#umusync#taskedit.xhtml:0" NAME="item"
+   PATH="/umusync/taskedit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="task::#umusync#tasklist.xhtml" NAME="output"
+    PATH="/umusync/tasklist.xhtml"
+    TARGET="rules:#umusync#tasklist.xhtml" TITLE="task" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#umusync#pageedit.jsp"
-  PATH="/umusync/pageedit.jsp" SHAPE="280,72,50,41" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#umusync#pageedit.jsp:0" NAME="item"
-   PATH="/umusync/pageedit.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="page::#umusync#pagelist.jsp" NAME="output"
-    PATH="/umusync/pagelist.jsp"
-    SHAPE="329,104,448,104,448,8,40,8,40,56,79,56"
-    TARGET="rules:#umusync#pagelist.jsp" TITLE="page" model-entity="JSFProcessItemOutput"/>
+ <PROCESS-ITEM NAME="rules:#umusync#taskexecute.xhtml"
+  PATH="/umusync/taskexecute.xhtml" SHAPE="320,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#umusync#taskexecute.xhtml:0" NAME="item"
+   PATH="/umusync/taskexecute.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="rtn::#umusync#tasklist.xhtml" NAME="output"
+    PATH="/umusync/tasklist.xhtml"
+    TARGET="rules:#umusync#tasklist.xhtml" TITLE="rtn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#umusync#pagelist.xhtml"
+  PATH="/umusync/pagelist.xhtml" SHAPE="304,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#umusync#pagelist.xhtml:0" NAME="item"
+   PATH="/umusync/pagelist.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#umusync#pageedit.xhtml" NAME="output"
+    PATH="/umusync/pageedit.xhtml"
+    TARGET="rules:#umusync#pageedit.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="criteria::#umusync#criterialist.xhtml"
+    NAME="output1" PATH="/umusync/criterialist.xhtml"
+    TARGET="rules:#umusync#criterialist.xhtml" TITLE="criteria" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="task::#umusync#tasklist.xhtml"
+    NAME="output2" PATH="/umusync/tasklist.xhtml"
+    TARGET="rules:#umusync#tasklist.xhtml" TITLE="task" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#umusync#criterialist.xhtml"
+  PATH="/umusync/criterialist.xhtml" SHAPE="288,641,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#umusync#criterialist.xhtml:0" NAME="item"
+   PATH="/umusync/criterialist.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="edit::#umusync#criteriaedit.xhtml"
+    NAME="output" PATH="/umusync/criteriaedit.xhtml"
+    TARGET="rules:#umusync#criteriaedit.xhtml" TITLE="edit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="task::#umusync#tasklist.xhtml"
+    NAME="output1" PATH="/umusync/tasklist.xhtml"
+    TARGET="rules:#umusync#tasklist.xhtml" TITLE="task" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="page::#umusync#pagelist.xhtml"
+    NAME="output2" PATH="/umusync/pagelist.xhtml"
+    TARGET="rules:#umusync#pagelist.xhtml" TITLE="page" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#umusync#criteriaedit.xhtml"
+  PATH="/umusync/criteriaedit.xhtml" SHAPE="544,737,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#umusync#criteriaedit.xhtml:0" NAME="item"
+   PATH="/umusync/criteriaedit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="criteria::#umusync#criterialist.xhtml"
+    NAME="output" PATH="/umusync/criterialist.xhtml"
+    TARGET="rules:#umusync#criterialist.xhtml" TITLE="criteria" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#umusync#pageedit.xhtml"
+  PATH="/umusync/pageedit.xhtml" SHAPE="528,449,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#umusync#pageedit.xhtml:0" NAME="item"
+   PATH="/umusync/pageedit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="page::#umusync#pagelist.xhtml" NAME="output"
+    PATH="/umusync/pagelist.xhtml"
+    TARGET="rules:#umusync#pagelist.xhtml" TITLE="page" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

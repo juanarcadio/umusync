@@ -1,9 +1,13 @@
 package umu.sakai.jsf.beans;
 
+import java.io.Serializable;
+
 import umu.sakai.jsf.validator.Validable;
 import umu.sakai.kernel.api.UMUServiceLoader;
 
-public class UMUBeanServiceLoader extends UMUServiceLoader implements Validable {
+public class UMUBeanServiceLoader extends UMUServiceLoader implements Validable, Serializable {
+
+	private static final long serialVersionUID = 1386888594369535951L;
 
 	public UMUSecureJspMap getHasPermission() { 
 		return (UMUSecureJspMap)this.getService("umu.sakai.kernel.secure.UMUSecureJSP"); 

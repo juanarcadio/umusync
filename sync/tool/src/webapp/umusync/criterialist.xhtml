@@ -1,16 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@ taglib uri="http://sakaiproject.org/jsf/sakai" prefix="sakai" %>
-<%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
-<%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
-     
-<jsp:useBean id="msgs" class="org.sakaiproject.util.ResourceLoader" scope="session">
-   <jsp:setProperty name="msgs" property="baseName" value="umu.sakai.umusync.tool.bundle.Messages"/>
-</jsp:useBean>
-                 
-<f:view>	
-	<sakai:view title="#{msgs.maintitle}">
-		<sakai:stylesheet path="/css/syncstyle.css"/>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sakai="http://sakaiproject.org/jsf/sakai"	
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/templates/layout.xhtml">
+
+	<ui:define name="body">	
 					
   		<h:form id="menusakai">
 			<sakai:tool_bar>
@@ -32,7 +29,6 @@
 	  			
 		<h:form id="list">	  						
 			
-			<%-- CRITERIA LIST --%>
 			<rich:dataTable id="criteriasList" value="#{SyncBean.criteriaNames}" var="item"
 				bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3"
 				first="0" dir="LTR" frame="hsides" rules="all"
@@ -102,5 +98,5 @@
 				rendered="#{empty SyncBean.criteriaNames}"/>
 			
 		</h:form>		
-	</sakai:view>
-</f:view>
+	</ui:define>
+</ui:composition>	

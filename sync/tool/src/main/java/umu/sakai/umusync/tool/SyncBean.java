@@ -18,6 +18,7 @@ import javax.faces.validator.ValidatorException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.richfaces.component.UIDragSource;
 import org.richfaces.event.DropEvent;
 import org.sakaiproject.util.ResourceLoader;
 
@@ -705,7 +706,9 @@ public class SyncBean extends UMUBeanServiceLoader {
 
 	private String delDragItem(DropEvent ev) {
 		IListString item = (IListString) ev.getDragValue();
-		if (ev.getDragType().equals("left")) {
+		String dragType = ((UIDragSource) ev.getDragSource()).getType();
+		
+		if ("left".equals(dragType)) {
 			this.getPage().delToolFromLeftColumn(item);
 		} else {
 			this.getPage().delToolFromRightColumn(item);

@@ -85,7 +85,7 @@
 		<umu.hibernate.validator.version>3.1.0.GA</umu.hibernate.validator.version>
 		<umu.jsf.version>1.1.02</umu.jsf.version>
 		<umu.myfaces.version>1.1.5</umu.myfaces.version>
-		<umu.richfaces.version>3.1.6.CR1</umu.richfaces.version>
+		<umu.richfaces.version>4.3.7.Final</umu.richfaces.version>
 		<umu.taglibs.version>1.0.4</umu.taglibs.version>
 		<umu.testng.version>5.11</umu.testng.version>
 	</properties>

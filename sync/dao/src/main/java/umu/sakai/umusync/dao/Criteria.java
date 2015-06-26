@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
 
+import umu.sakai.umusync.api.ISyncManager;
+
 
 @Entity
 @Table(name="SAKAI_SYNCSITES_CRITERIA")
@@ -33,7 +35,7 @@ public class Criteria implements umu.sakai.umusync.api.dao.ICriteria {
 	@Column(name="COMPARADOR")
 	@Length(max=1)
 	@NotNull
-	protected String comparador;
+	protected String comparador = ISyncManager.COMPARATOR_EQUALS;
 	
 	@Column(name="VALOR")
 	@Length(max=30)

@@ -1,18 +1,16 @@
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@ taglib uri="http://sakaiproject.org/jsf/sakai" prefix="sakai" %>
-<%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
-<%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
-     
-<jsp:useBean id="msgs" class="org.sakaiproject.util.ResourceLoader" scope="session">
-   <jsp:setProperty name="msgs" property="baseName" value="umu.sakai.umusync.tool.bundle.Messages"/>
-</jsp:useBean>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sakai="http://sakaiproject.org/jsf/sakai"	
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/templates/layout.xhtml">
 
-<f:view>	
-	<sakai:view title="#{msgs.maintitle}">
-		<sakai:stylesheet path="/css/syncstyle.css"/>
-	  			
+	<ui:define name="body">	
+     
 		<h:form id="editCriteria">
+		
 			<sakai:tool_bar>
 				<sakai:tool_bar_item
 					action="#{SyncBean.saveCriteria}"
@@ -36,8 +34,7 @@
 			
 			</h:panelGrid>
 			
-			<rich:dataTable/> 
-			<h:dataTable id="criteriaTable" 
+			<rich:dataTable id="criteriaTable" 
 							styleClass="dr-table rich-table"
 							headerClass="dr-table-subheadercell rich-table-subheadercell dr-table-subheader rich-table-subheader"							
 							columnClasses="dr-subtable-cell rich-subtable-cell"
@@ -52,16 +49,16 @@
         		</h:panelGrid>
 			</f:facet> 
 
-
-			<h:column>
+			<rich:column>
 			  	<f:facet name="header">
    					<h:outputText value=" "/>
 				</f:facet>
 				
-				<a4j:commandLink
+				<a4j:commandLink 
 					immediate="true"
-					reRender="criteriaTable"
+					render="criteriaTable"					
 					rendered="#{SyncBean.criteriaSize gt 1}"
+					execute="@form"
 					action="#{SyncBean.removeCriterion}"					
 					actionListener="#{SyncBean.selectCriterion}"> 
 					<h:graphicImage alt="#{msgs.del}" url="/images/eliminar.gif"/>
@@ -71,9 +68,9 @@
 					rendered="#{SyncBean.criteriaSize eq 1}" 
 					alt="X" 
 					url="/images/eliminar-gris.gif"/>
-			</h:column>
+			</rich:column>
 
-			<h:column>
+			<rich:column>
 			  	<f:facet name="header">
    					<h:outputText value="#{msgs.property}"/>
 				</f:facet>
@@ -83,47 +80,51 @@
 				</h:inputText>
 
 				<h:message styleClass="error" for="Property"/>
-			</h:column>
-			<h:column>
+			</rich:column>
+			<rich:column>
 			  	<f:facet name="header">
     				<h:outputText value="  "/>
 				</f:facet>	
-				<h:selectOneMenu onchange="submit()" immediate="true" value="#{criterion.comparador}">
-					<f:selectItems value="#{SyncBean.comparatorSelect}"/>
-					<a4j:support event="onchange" reRender="criteriaTable"/> 					
-				</h:selectOneMenu>
-			</h:column>
-			<h:column>
+					<a4j:region>
+						<h:selectOneMenu value="#{criterion.comparador}">
+							<f:selectItems value="#{SyncBean.comparatorSelect}"/>
+							<a4j:ajax immediate="true" event="change" render="criteriaTable" execute="@form"/> 					
+						</h:selectOneMenu>
+					</a4j:region>
+			</rich:column>
+			<rich:column>
 			  	<f:facet name="header">
     				<h:outputText value="#{msgs.value}"/>
 				</f:facet>					
-				<h:inputText rendered="#{SyncBean.comparatorMap[criterion.comparador].arity eq 2}" 
-					id="Value" required="true" value="#{criterion.valor}">
+				<h:inputText id="Value" rendered="#{SyncBean.comparatorMap[criterion.comparador].arity eq 2}" 
+								required="true" value="#{criterion.valor}">
 					<f:validator validatorId="SyncJpaValidator"/>
 				</h:inputText>
 				<h:message styleClass="error" for="Value"/>
-			</h:column>
+			</rich:column>
+			
 			
 			<f:facet name="footer">
         		<a4j:commandLink
-        			oncomplete="setMainFrameHeight(window.frameElement.id)"
-        			reRender="criteriaTable, Name"
+        			render="editCriteria"
         			title="#{msgs.addc}"
-					action="#{SyncBean.addNewCriterion}">
+        			execute="@form"
+        			action="#{SyncBean.addNewCriterion}">
 					<h:graphicImage alt="#{msgs.add}" url="/images/plus.png"/>
 				</a4j:commandLink>
 			</f:facet> 
-			</h:dataTable>	
+			
+			</rich:dataTable>	
 
 			<h:panelGrid columns="2"  styleClass="detached">
 				<h:commandButton
 					value="#{SyncBean.isNewCriteria ? msgs.b_criterianew : msgs.b_criteriaupd}" 
 					action="#{SyncBean.saveCriteria}"
-					onclick="if (#{not SyncBean.isNewCriteria} && !confirm('#{msgs.modcriteria} #{msgs.seguro}')) return false;"
+					onclick="if (#{not SyncBean.isNewCriteria} &amp;&amp; !confirm('#{msgs.modcriteria} #{msgs.seguro}')) return false;"
 				/>
 				<h:commandButton immediate="true" value="#{msgs.b_rtn}" action="#{SyncBean.returnFromCriteria}"/>
 			</h:panelGrid>
 		</h:form>
 		
-	</sakai:view>
-</f:view>
+	</ui:define>
+</ui:composition>

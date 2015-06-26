@@ -45,12 +45,12 @@
 }
 
 .titulo {
-	color:#AE1B2E;
-	font-size:14px;
+	color: #AE1B2E;
+	font-size: 14px;
 }
 
 .imagenlist {
-	position: relative; 
+	position: relative;
 	top: 4px;
 }
 
@@ -59,8 +59,8 @@
 }
 
 .detached {
-	margin-top : 15px;
-	margin-bottom : 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .fullWidht {
@@ -82,8 +82,8 @@
 }
 
 .detachedTable {
-	margin-top : 15px;
-	margin-bottom : 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .detachedTable td {
@@ -91,11 +91,29 @@
 }
 
 .detachedTable ul {
-	list-style:none;
+	list-style: none;
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
 
 .tab {
 	margin-left: 40px;
+}
+
+.rf-ind-acpt {
+	background-image: url("../images/accept.gif");
+    background-position: 5px;
+    background-repeat: no-repeat;
+    border:2px solid green;
+    padding-left: 30px;
+    padding-right: 3px;
+}
+
+.rf-ind-rejt {
+	border:2px solid red;
+    background-image: url("../images/reject.gif");
+    background-position: 5px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    padding-right: 3px;
 }
