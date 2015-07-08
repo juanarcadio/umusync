@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>umusync</artifactId>
 		<groupId>umu.sakai-contrib</groupId>
-		<version>10-SNAPSHOT</version>
+		<version>10.5</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>umu.sakai-contrib.kernel</groupId>
