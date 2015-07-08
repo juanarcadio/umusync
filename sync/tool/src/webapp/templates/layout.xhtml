@@ -7,19 +7,21 @@
 	xmlns:rich="http://richfaces.org/rich">
 	
 	<!-- h:head tag is necessary to load Richfaces CSS and JS -->	
-	<h:head/>
+	<!-- h:head/-->
 	
 	<f:facet name="head">
 		<sakai:stylesheet path="/css/syncstyle.css"/>
 		<sakai:script path="/js/umusync.js"/>		
 		
-		<!-- Loading RichFaces 4 - CSS and JS in HEAD 
-		<sakai:stylesheet path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/DEFAULT/skinning.css"/>
+		<!-- Loading RichFaces 4 - CSS and JS in HEAD --> 
+		
+		<!-- Disable skinning.css to avoid conflicts with Morpheus 
+		<sakai:stylesheet path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/DEFAULT/skinning.css"/-->
 		<sakai:script path="/javax.faces.resource/jsf.js.jsf?ln=javax.faces"/>
 		<sakai:script path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/jquery.js"/>
 		<sakai:script path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/packed/packed.js"/>
 		<sakai:stylesheet path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/DEFAULT/packed/packed.css"/>				
-		-->
+		
 
 	</f:facet>
 		
