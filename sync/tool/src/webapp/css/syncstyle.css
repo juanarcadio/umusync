@@ -1,3 +1,7 @@
+.icon-sakai-umusync:before {
+  content: "\F021" !important;
+}
+
 .Fila1 {
 	background-color: #E5FFEB;
 }
