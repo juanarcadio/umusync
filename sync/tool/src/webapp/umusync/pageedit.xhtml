@@ -5,11 +5,14 @@
 	xmlns:sakai="http://sakaiproject.org/jsf/sakai"	
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
-	template="/templates/layout.xhtml">
+	template="/templates/layoutPageEdit.xhtml">
 
-	<ui:define name="body">	
+	<ui:define name="body">
   		 		
-		<h:form>
+		<h:form id="pageEditForm">
+
+			<a4j:commandLink id="onLoadEvent" render="unicaList,izqList,derList" immediate="true"/>
+			
 		  	<sakai:tool_bar>
 				<sakai:tool_bar_item				
 					action="#{SyncBean.savePage}"

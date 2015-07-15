@@ -1,0 +1,24 @@
+<sakai:view title="#{msgs.maintitle}" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sakai="http://sakaiproject.org/jsf/sakai"	
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<f:facet name="head">
+		<sakai:stylesheet path="/css/syncstyle.css"/>
+		<sakai:script path="/js/pageEdit.js"/>		
+		
+		<!-- Loading RichFaces 4 - CSS and JS in HEAD --> 
+		<sakai:script path="/javax.faces.resource/jsf.js.jsf?ln=javax.faces"/>
+		<sakai:script path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/jquery.js"/>
+		<sakai:script path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/packed/packed.js"/>
+		<sakai:stylesheet path="/org.richfaces.resources/javax.faces.resource/org.richfaces.staticResource/4.3.7.Final/Packed/DEFAULT/packed/packed.css"/>				
+	</f:facet>
+		
+	<rich:panel>
+        <ui:insert name="body">Page Body</ui:insert>
+    </rich:panel>
+    
+</sakai:view>
