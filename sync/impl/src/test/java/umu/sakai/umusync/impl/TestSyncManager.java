@@ -29,6 +29,10 @@ import org.sakaiproject.site.api.SiteService;
 import org.sakaiproject.site.api.ToolConfiguration;
 import org.sakaiproject.tool.api.Tool;
 import org.sakaiproject.tool.api.ToolManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -41,27 +45,41 @@ import umu.sakai.umusync.api.dao.IPage;
 import umu.sakai.umusync.api.dao.ITask;
 import umu.sakai.umutests.UMUTest;
 
+@ContextConfiguration(locations={"classpath:umu/sakai/umutests/components.xml","file:../pack/src/webapp/WEB-INF/components.xml"})
 public class TestSyncManager extends UMUTest {
 	
 	private static Log log = LogFactory.getLog(TestSyncManager.class);
-
-	protected String[] getConfigLocations() {
-        return new String[] { "classpath:umu/sakai/umutests/components.xml","file:../pack/src/webapp/WEB-INF/components.xml" };
-    }
 	
+	@Autowired
+	@Qualifier("umu.sakai.umusync.api.ISyncManager")
 	protected ISyncManager testSyncManager;
 
+	@Autowired
+	@Qualifier("org.sakaiproject.site.api.SiteService")
+	protected SiteService ss;
+	
+	@Autowired
+	@Qualifier("org.sakaiproject.tool.api.ToolManager")
+	protected ToolManager tm;
+	
+	@Autowired
+	@Qualifier("org.sakaiproject.component.api.ServerConfigurationService")
+	protected ServerConfigurationService serverConfigurationServiceMock;
+	
+	@Autowired
+	@Qualifier("org.sakaiproject.authz.api.AuthzGroupService")
+	protected AuthzGroupService ags;
+	
+	@Autowired
+	@Qualifier("org.sakaiproject.authz.api.FunctionManager")
+	protected FunctionManager fm;
+	
 	@BeforeClass
 	public void init() {
-		testSyncManager = (ISyncManager)this.getApplicationContext().getBean("umu.sakai.umusync.api.ISyncManager");
-		SiteService ss = (SiteService)this.getApplicationContext().getBean("org.sakaiproject.site.api.SiteService");
 		try {
 			Mockito.when(ss.getSite(Mockito.anyString())).thenReturn(null);
 			Mockito.when(ss.getSite("mercury")).thenThrow(new IdUnusedException(null));
 			
-			ToolManager tm = (ToolManager)this.getApplicationContext().getBean("org.sakaiproject.tool.api.ToolManager");
-			ServerConfigurationService serverConfigurationServiceMock = (ServerConfigurationService)this.getApplicationContext().getBean("org.sakaiproject.component.api.ServerConfigurationService");
-					
 			/* Tools que tiene sakai version mock */
 			Set<Tool> toolsDeSakai = new HashSet<Tool>();
 			Tool resources = Mockito.mock(Tool.class);
@@ -106,9 +124,6 @@ public class TestSyncManager extends UMUTest {
 			tipos.add("project");	
 			
 			Mockito.when(ss.getSiteTypes()).thenReturn(tipos);
-			
-			
-			AuthzGroupService ags = (AuthzGroupService)this.getApplicationContext().getBean("org.sakaiproject.authz.api.AuthzGroupService");
 			
 			/* Realms de sitio que hay en sakai */
 			List<AuthzGroup> siterealm = new ArrayList<AuthzGroup>();
@@ -228,9 +243,7 @@ public class TestSyncManager extends UMUTest {
 			Mockito.when(dosRoles.getRoles()).thenReturn(dosRolesSet);
 			Mockito.when(dosRoles.getId()).thenReturn("!site.template.dosRoles");
 
-			
-			
-			FunctionManager fm = (FunctionManager)this.getApplicationContext().getBean("org.sakaiproject.authz.api.FunctionManager");
+
 			List<String> listaFunciones = new ArrayList<String>();
 			listaFunciones.add("umusync.VIEW");
 			listaFunciones.add("annc.new");
@@ -578,8 +591,6 @@ public class TestSyncManager extends UMUTest {
 		return 0;		
 	}
 			
-	
-	
 	@DataProvider(name="sites")
 	public Object[][] getSites() {
 		return new Object[][]{{"~admin"}, {"existente"}};
@@ -960,8 +971,8 @@ public class TestSyncManager extends UMUTest {
 		
 		IPage paginaModified = testSyncManager.getPage("withOrphan");
 		assert (paginaModified.getLeftColumn().isEmpty());
-		assertEquals( 1, paginaModified.getRightColumn().size());
-		assertEquals( "sakai.calendar", paginaModified.getRightColumn().get(0).getString());
+		Assert.assertEquals( 1, paginaModified.getRightColumn().size());
+		Assert.assertEquals( "sakai.calendar", paginaModified.getRightColumn().get(0).getString());
 	}
 	
 	@Test(expectedExceptions={java.lang.Throwable.class})
@@ -1096,7 +1107,7 @@ public class TestSyncManager extends UMUTest {
 	@Test
 	public void testJobName() throws Exception {
 		IJob job = (IJob)testSyncManager;
-		assertEquals("SyncSites Job", job.jobName());
+		Assert.assertEquals("SyncSites Job", job.jobName());
 	}
 	
 	@Test
@@ -1183,7 +1194,7 @@ public class TestSyncManager extends UMUTest {
 	@Test
 	public void testGetRegisterdFunctions() {
 		Collection<String> listaFunciones = testSyncManager.getRegisteredFunctions();
-		assertEquals(11, listaFunciones.size());
+		Assert.assertEquals(11, listaFunciones.size());
 		assert (listaFunciones.contains("umusync.VIEW") && 
 				listaFunciones.contains("annc.new") && 
 				listaFunciones.contains("annc.read") && 
@@ -1205,7 +1216,7 @@ public class TestSyncManager extends UMUTest {
 	public void testExecuteTestTask() throws Throwable {
 		insertTestTask();
 		ITask t = testSyncManager.getTaskAndRelatedPages(getTestTaskId());
-		assertEquals("0/1", testSyncManager.syncSites(t));
+		Assert.assertEquals("0/1", testSyncManager.syncSites(t));
 	}
 	
 	@Test
@@ -1228,7 +1239,7 @@ public class TestSyncManager extends UMUTest {
 		}
 		
 		defaultUser = testSyncManager.getTaskAndRelatedPages(idTask);
-		assertEquals("0/1", testSyncManager.syncSites(defaultUser));
+		Assert.assertEquals("0/1", testSyncManager.syncSites(defaultUser));
 	}
 
 	@Test
@@ -1251,7 +1262,7 @@ public class TestSyncManager extends UMUTest {
 		}
 		
 		defaultUser = testSyncManager.getTaskAndRelatedPages(idTask);
-		assertEquals("0/2", testSyncManager.syncSites(defaultUser));
+		Assert.assertEquals("0/2", testSyncManager.syncSites(defaultUser));
 	}
 	
 	@Test
@@ -1276,7 +1287,7 @@ public class TestSyncManager extends UMUTest {
 		}
 		
 		defaultUser = testSyncManager.getTaskAndRelatedPages(idTask);
-		assertEquals("0/1", testSyncManager.syncSites(defaultUser));
+		Assert.assertEquals("0/1", testSyncManager.syncSites(defaultUser));
 	}
 	
 	@Test
@@ -1310,7 +1321,7 @@ public class TestSyncManager extends UMUTest {
 		}
 		
 		defaultUser = testSyncManager.getTaskAndRelatedPages(idTask);
-		assertEquals("0/3", testSyncManager.syncSites(defaultUser));
+		Assert.assertEquals("0/3", testSyncManager.syncSites(defaultUser));
 	}
 	
 	@Test
@@ -1372,7 +1383,7 @@ public class TestSyncManager extends UMUTest {
 		}
 		
 		defaultUser = testSyncManager.getTaskAndRelatedPages(idTask);
-		assertEquals("0/1", testSyncManager.syncSites(defaultUser));
+		Assert.assertEquals("0/1", testSyncManager.syncSites(defaultUser));
 	}
 
 	@Test (expectedExceptions = {java.util.regex.PatternSyntaxException.class})
@@ -1423,7 +1434,7 @@ public class TestSyncManager extends UMUTest {
 		testSyncManager.addNewPage(pToAdd);
 		t.addPageToAdd(pToAdd);
 		testSyncManager.addTask(t);
-		assertEquals("1/1", testSyncManager.syncSites(testSyncManager.getTaskAndRelatedPages(id)));
+		Assert.assertEquals("1/1", testSyncManager.syncSites(testSyncManager.getTaskAndRelatedPages(id)));
 	}
 	
 	
@@ -1441,7 +1452,7 @@ public class TestSyncManager extends UMUTest {
 		t.addPageToAdd(pToAdd);
 		t.setTipo("removedSite");
 		testSyncManager.addTask(t);
-		assertEquals("0/1", testSyncManager.syncSites(testSyncManager.getTaskAndRelatedPages(id)));
+		Assert.assertEquals("0/1", testSyncManager.syncSites(testSyncManager.getTaskAndRelatedPages(id)));
 	}
 	
 	
@@ -1459,7 +1470,7 @@ public class TestSyncManager extends UMUTest {
 		t.addPageToAdd(pToAdd);
 		t.setTipo("withoutAdminRole");
 		testSyncManager.addTask(t);
-		assertEquals("0/1", testSyncManager.syncSites(testSyncManager.getTaskAndRelatedPages(id)));
+		Assert.assertEquals("0/1", testSyncManager.syncSites(testSyncManager.getTaskAndRelatedPages(id)));
 	}
 	
 	@Test
@@ -1523,7 +1534,7 @@ public class TestSyncManager extends UMUTest {
 		}
 		
 		defaultUser = testSyncManager.getTaskAndRelatedPages(idTask);
-		assertEquals("0/0", testSyncManager.syncSites(defaultUser));
+		Assert.assertEquals("0/0", testSyncManager.syncSites(defaultUser));
 	}
 	
 	/* 
@@ -1536,7 +1547,7 @@ public class TestSyncManager extends UMUTest {
 		t.setTipo("permissionTest");
 		t.setRealmSite("!site.template.soloRolDos");
 		testSyncManager.addTask(t);
-		assertEquals("1/2", testSyncManager.syncSites(t));
+		Assert.assertEquals("1/2", testSyncManager.syncSites(t));
 	}
 
 	@Test
@@ -1548,7 +1559,7 @@ public class TestSyncManager extends UMUTest {
 		t.setRealmSection(null);
 		testSyncManager.addTask(t);
 		//assertEquals("1/2", testSyncManager.syncSites(t)); equals cannot stub
-		assertEquals("2/2", testSyncManager.syncSites(t));
+		Assert.assertEquals("2/2", testSyncManager.syncSites(t));
 	}
 	
 	
@@ -1561,7 +1572,6 @@ public class TestSyncManager extends UMUTest {
 	 */
 	@Test
 	public void testNoAddingTool() throws Throwable {
-		
 		ITask task = testSyncManager.createTask();
 		task.setSyncInto(false);
 		task.setSyncHome(ITask.NOT_CHANGE_HOME_PAGE);
@@ -1570,13 +1580,12 @@ public class TestSyncManager extends UMUTest {
 		task.setRealmSection(null);
 		task.addToolToAdd("sakai.umusync");
 		testSyncManager.addTask(task);
-		assertEquals("0/2", testSyncManager.syncSites(task));
+		Assert.assertEquals("0/2", testSyncManager.syncSites(task));
 	}
 	
 	/*
 	@Test
-	public void testAddingTool() throws Throwable {
-		
+	public void testAddingTool() throws Throwable {		
 		ITask task = testSyncManager.createTask();
 		task.setSyncInto(false);
 		task.setSyncHome(ITask.NOT_CHANGE_HOME_PAGE);
@@ -1585,7 +1594,7 @@ public class TestSyncManager extends UMUTest {
 		task.setRealmSection(null);
 		task.addToolToAdd("sakai.umusync2");
 		testSyncManager.addTask(task);
-		assertEquals("2/2", testSyncManager.syncSites(task));
+		Assert.assertEquals("2/2", testSyncManager.syncSites(task));
 	}*/
 
 }

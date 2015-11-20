@@ -58,8 +58,8 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
+			<version>${umu.testng.version}</version>
 			<scope>test</scope>
-			<classifier>jdk15</classifier>
 		</dependency>
 		<dependency>
 			<groupId>umu.sakai-contrib.umutests</groupId>

@@ -27,7 +27,6 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<classifier>jdk15</classifier>
 			<version>${umu.testng.version}</version>
 			<scope>provided</scope>
 		</dependency>
