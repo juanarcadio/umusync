@@ -18,7 +18,7 @@
     <parent>
 	    <artifactId>umujobs</artifactId>
 	    <groupId>umu.sakai-contrib.umujobs</groupId>
-	    <version>10-SNAPSHOT</version>
+	    <version>10.6</version>
 	    <relativePath>../pom.xml</relativePath>
     </parent>
 
