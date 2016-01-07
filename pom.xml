@@ -9,7 +9,7 @@
 	<name>Umusync Tool</name>
 	<groupId>umu.sakai-contrib</groupId>
 	<artifactId>umusync</artifactId>
-	<version>10.6</version>
+	<version>10-SNAPSHOT</version>
 	<organization>
 		<name>Universidad de Murcia</name>
 		<url>http://www.um.es/</url>
@@ -28,7 +28,7 @@
 	<scm>
 		<connection>scm:git:git@github.com:juanarcadio/umusync.git</connection>
 		<developerConnection>scm:git:git@github.com:juanarcadio/umusync.git</developerConnection>
-	  <tag>umusync-10.6</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<repositories>
