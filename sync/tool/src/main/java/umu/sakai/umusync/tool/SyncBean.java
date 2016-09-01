@@ -28,6 +28,7 @@ import umu.sakai.umusync.api.dao.ICriteria;
 import umu.sakai.umusync.api.dao.IListString;
 import umu.sakai.umusync.api.dao.IPage;
 import umu.sakai.umusync.api.dao.ITask;
+import umu.sakai.umusync.tool.CheckBoxOption;
 import umu.sakai.umusync.tool.converters.CriteriaConverter;
 import umu.sakai.umusync.tool.converters.HomePageConverter;
 import umu.sakai.umusync.tool.converters.IgnoreFunctionsModeConverter;
@@ -212,10 +213,12 @@ public class SyncBean extends UMUBeanServiceLoader {
 		
 		// initialize
 		for (IListString tool: currentTask.getToolsToAdd()) {
-			checkboxes.get(tool.getString()).setAddObject(tool);
+			CheckBoxOption cbo = checkboxes.get(tool.getString());
+			if (cbo!=null) cbo.setAddObject(tool);
 		}
 		for (IListString tool: currentTask.getToolsToDel()) {
-			checkboxes.get(tool.getString()).setDelObject(tool);
+			CheckBoxOption cbo = checkboxes.get(tool.getString());
+			if (cbo!=null) cbo.setDelObject(tool);
 		}
 		for (IPage page: currentTask.getPagesToAdd()) {
 			checkboxes.get(page.getName()).initAdd();
