@@ -537,8 +537,8 @@ public class SyncManager implements ISyncManager, Job {
 			if (c.getValor()==null) c.setValor("");
 			
 			// Included in siteService previous call: propertyCriteria and criteria params  
-			if (COMPARATOR_EQUALS.equals(comparator) ||
-					(COMPARATOR_MATCHES.equals(comparator) && SITE_TITLE.equals(c.getProperty()))) {
+                        if ((COMPARATOR_EQUALS.equals(comparator) || COMPARATOR_MATCHES.equals(comparator))
+					&& SITE_TITLE.equals(c.getProperty())) {
 				continue;
 			}
 			
