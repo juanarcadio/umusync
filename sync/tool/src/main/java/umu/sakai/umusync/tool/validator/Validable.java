@@ -1,4 +1,4 @@
-package umu.sakai.jsf.validator;
+package umu.sakai.umusync.tool.validator;
 
 public interface Validable {
 	public Class getDaoClass(String beanProperty);

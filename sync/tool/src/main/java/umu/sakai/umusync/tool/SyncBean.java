@@ -22,16 +22,17 @@ import org.richfaces.component.UIDragSource;
 import org.richfaces.event.DropEvent;
 import org.sakaiproject.util.ResourceLoader;
 
-import umu.sakai.jsf.beans.UMUBeanServiceLoader;
 import umu.sakai.umusync.api.ISyncManager;
 import umu.sakai.umusync.api.dao.ICriteria;
 import umu.sakai.umusync.api.dao.IListString;
 import umu.sakai.umusync.api.dao.IPage;
 import umu.sakai.umusync.api.dao.ITask;
+import umu.sakai.umusync.tool.beans.UMUBeanServiceLoader;
 import umu.sakai.umusync.tool.converters.CriteriaConverter;
 import umu.sakai.umusync.tool.converters.HomePageConverter;
 import umu.sakai.umusync.tool.converters.IgnoreFunctionsModeConverter;
 import umu.sakai.umusync.tool.converters.SiteTypeConverter;
+
 
 public class SyncBean extends UMUBeanServiceLoader {
 

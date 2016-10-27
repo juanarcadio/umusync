@@ -13,7 +13,7 @@
 	    <entry key="org.sakaiproject.util.ResourceLoader"><ref bean="umu.sakai.umusync.ResourceLoader"/></entry>	    
 	</util:map>
 
-   	<bean id="umu.sakai.umusync.UMUSecureJSP" class="umu.sakai.jsf.beans.UMUSecureJspMap">
+   	<bean id="umu.sakai.umusync.UMUSecureJSP" class="umu.sakai.umusync.tool.beans.UMUSecureJspMap">
    		<property name="permissionService" ref="umu.sakai.umusync.secure.UMUSecureInterceptor"/>
    	</bean>
    	

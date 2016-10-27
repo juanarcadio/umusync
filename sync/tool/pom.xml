@@ -39,11 +39,6 @@
 			<artifactId>sakai-umukernel-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>umu.sakai-contrib.jsf</groupId>
-			<artifactId>umujsf-beans</artifactId>
-			<version>${project.version}</version>		
-		</dependency>
-		<dependency>
 			<groupId>umu.sakai-contrib.umusync</groupId>
 			<artifactId>umusync-api</artifactId>
 			<version>${project.version}</version>

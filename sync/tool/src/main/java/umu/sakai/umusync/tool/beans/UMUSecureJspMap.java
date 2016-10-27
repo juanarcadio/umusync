@@ -1,4 +1,4 @@
-package umu.sakai.jsf.beans;
+package umu.sakai.umusync.tool.beans;
 
 import java.util.Collection;
 import java.util.Map;

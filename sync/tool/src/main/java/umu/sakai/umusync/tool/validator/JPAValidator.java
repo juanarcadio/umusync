@@ -1,4 +1,4 @@
-package umu.sakai.jsf.validator;
+package umu.sakai.umusync.tool.validator;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.EditableValueHolder;

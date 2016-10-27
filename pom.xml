@@ -19,7 +19,6 @@
 
 	<modules>
 		<module>sync</module>
-		<module>jsf</module>
 		<module>tests</module>
 		<module>kernel</module>
 	</modules>

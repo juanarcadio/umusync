@@ -120,7 +120,7 @@
 	</navigation-rule>
 	<validator>
 		<validator-id>SyncJpaValidator</validator-id>
-		<validator-class>umu.sakai.jsf.validator.JPAValidator
+		<validator-class>umu.sakai.umusync.tool.validator.JPAValidator
 		</validator-class>
 	</validator>
 	<application>

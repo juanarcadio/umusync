@@ -1,8 +1,8 @@
-package umu.sakai.jsf.beans;
+package umu.sakai.umusync.tool.beans;
 
 import java.io.Serializable;
 
-import umu.sakai.jsf.validator.Validable;
+import umu.sakai.umusync.tool.validator.Validable;
 import umu.sakai.kernel.api.UMUServiceLoader;
 
 public class UMUBeanServiceLoader extends UMUServiceLoader implements Validable, Serializable {
