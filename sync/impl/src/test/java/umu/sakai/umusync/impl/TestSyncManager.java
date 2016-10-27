@@ -37,7 +37,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import umu.sakai.umujobs.api.IJob;
 import umu.sakai.umusync.api.ISyncManager;
 import umu.sakai.umusync.api.dao.ICriteria;
 import umu.sakai.umusync.api.dao.IListString;
@@ -1106,23 +1105,20 @@ public class TestSyncManager extends UMUTest {
 	
 	@Test
 	public void testJobName() throws Exception {
-		IJob job = (IJob)testSyncManager;
-		Assert.assertEquals("SyncSites Job", job.jobName());
+		Assert.assertEquals("SyncSites Job", testSyncManager.jobName());
 	}
 	
 	@Test
 	public void testJobWithoutTasks() throws Throwable {
 		disableAllTask();		
-		IJob job = (IJob)testSyncManager;
-		job.doit();		
+		testSyncManager.doit();		
 	}
 
 	@Test
 	public void testJobWithTasks() throws Throwable {
 		disableAllTask();
 		this.insertTestTask();
-		IJob job = (IJob)testSyncManager;
-		job.doit();
+		testSyncManager.doit();
 	}
 
 	

@@ -6,6 +6,7 @@
    	<bean id="umu.sakai.umusync.api.ISyncManagerTarget"
    		depends-on="org.sakaiproject.site.api.SiteService,
    					org.sakaiproject.authz.api.AuthzGroupService,
+   					org.sakaiproject.tool.api.SessionManager,
    					org.sakaiproject.tool.api.ToolManager,
    					org.sakaiproject.authz.api.FunctionManager,
    					org.sakaiproject.component.api.ServerConfigurationService"	
@@ -15,6 +16,7 @@
 		    <bean class="umu.sakai.umusync.impl.SyncManager">
 		    	<property name="siteService"><ref bean="org.sakaiproject.site.api.SiteService"/></property>
 				<property name="authzGroupService"><ref bean="org.sakaiproject.authz.api.AuthzGroupService"/></property>
+				<property name="sessionManager"><ref bean="org.sakaiproject.tool.api.SessionManager"/></property>
 				<property name="toolManager"><ref bean="org.sakaiproject.tool.api.ToolManager"/></property>
 				<property name="functionManager"><ref bean="org.sakaiproject.authz.api.FunctionManager"/></property>
 				<property name="serverConfigurationService"><ref bean="org.sakaiproject.component.api.ServerConfigurationService"/></property>				
@@ -29,7 +31,6 @@
             	<prop key="doit">PROPAGATION_REQUIRED</prop>
 	        </props>
 	    </property>
-	    	    
 	</bean>
    
    	<bean id="umusync-transactionManager"

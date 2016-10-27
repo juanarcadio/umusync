@@ -28,7 +28,6 @@ import umu.sakai.umusync.api.dao.ICriteria;
 import umu.sakai.umusync.api.dao.IListString;
 import umu.sakai.umusync.api.dao.IPage;
 import umu.sakai.umusync.api.dao.ITask;
-import umu.sakai.umusync.tool.CheckBoxOption;
 import umu.sakai.umusync.tool.converters.CriteriaConverter;
 import umu.sakai.umusync.tool.converters.HomePageConverter;
 import umu.sakai.umusync.tool.converters.IgnoreFunctionsModeConverter;

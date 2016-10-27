@@ -45,5 +45,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${sakai.quartz.version}</version>
+			<scope>provided</scope>		
+		</dependency>
+	</dependencies>
 
 </project>

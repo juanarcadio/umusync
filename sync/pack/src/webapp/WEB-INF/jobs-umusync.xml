@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			    http://www.springframework.org/schema/beans/spring-beans.xsd">
+						
+	<bean id="org.sakaiproject.api.app.scheduler.JobBeanWrapper.DoJobsSync"
+		depends-on="org.sakaiproject.api.app.scheduler.SchedulerManager, umu.sakai.umusync.api.ISyncManagerTarget"
+		class="org.sakaiproject.component.app.scheduler.jobs.SpringJobBeanWrapper"
+		scope="singleton" init-method="init">
+		
+		<property name="beanId" value="umu.sakai.umusync.api.ISyncManagerTarget" />
+		<property name="jobName" value="Sync Sites Job" />
+      	<property name="schedulerManager">
+      		<ref bean="org.sakaiproject.api.app.scheduler.SchedulerManager" />
+      	</property>
+   </bean>
+</beans>

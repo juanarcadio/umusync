@@ -176,4 +176,8 @@ public interface ISyncManager {
 	 */
 	boolean checkSiteId(String siteId);
 
+	// QUARTZ JOB
+	public String jobName();
+	public void doit() throws Throwable;	
+	
 }

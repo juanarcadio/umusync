@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-						http://www.springframework.org/schema/beans/spring-beans.xsd
-						http://www.springframework.org/schema/util
-						http://www.springframework.org/schema/util/spring-util.xsd">
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Mock UMU Secure Interceptor -->
     <bean id="umu.sakai.kernel.api.IUMUSecureInterceptor" class="umu.sakai.umutests.MockUMUSecureInterceptor"/>
@@ -40,6 +37,10 @@
 
 	<bean id="org.sakaiproject.authz.api.SecurityService" class="umu.sakai.umutests.SakaiMockService" factory-method="createMock">
   		<constructor-arg><value>org.sakaiproject.authz.api.SecurityService</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.api.app.scheduler.SchedulerManager" class="umu.sakai.umutests.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.api.app.scheduler.SchedulerManager</value></constructor-arg>
 	</bean>	
 
 </beans>

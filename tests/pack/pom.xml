@@ -51,6 +51,16 @@
 			<artifactId>hsqldb</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+      		<groupId>org.sakaiproject.scheduler</groupId>
+      	    <artifactId>scheduler-component-shared</artifactId>
+      		<scope>runtime</scope>
+		</dependency>  
+		<dependency>
+      		<groupId>org.sakaiproject.scheduler</groupId>
+      	    <artifactId>scheduler-api</artifactId>
+      		<scope>runtime</scope>
+		</dependency>  
 	</dependencies>
 
 	<build>

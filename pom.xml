@@ -19,7 +19,6 @@
 
 	<modules>
 		<module>sync</module>
-		<module>jobs</module>
 		<module>jsf</module>
 		<module>tests</module>
 		<module>kernel</module>
@@ -81,10 +80,10 @@
 	</repositories>
 
 	<properties>
-		<umu.hibernate.entitymanager.version>3.6.10.Final</umu.hibernate.entitymanager.version>
+		<umu.hibernate.entitymanager.version>3.6.10.Final</umu.hibernate.entitymanager.version> 
 		<umu.hibernate.validator.version>3.1.0.GA</umu.hibernate.validator.version>
 		<umu.jsf.version>1.1.02</umu.jsf.version>
-		<umu.myfaces.version>1.1.5</umu.myfaces.version>
+		
 		<umu.richfaces.version>4.3.7.Final</umu.richfaces.version>
 		<umu.taglibs.version>1.0.4</umu.taglibs.version>
 		<umu.testng.version>6.9.4</umu.testng.version>

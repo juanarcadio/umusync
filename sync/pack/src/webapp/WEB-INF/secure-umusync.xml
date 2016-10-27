@@ -10,7 +10,6 @@
     <bean id="umu.sakai.umusync.api.ISyncManager"
     	depends-on="umu.sakai.umusync.api.ISyncManagerTarget"
     	class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="proxyInterfaces" ref="umusync.proxyInterfaces"/>
         <property name="interceptorNames">
         	<list>
         		<value>umu.sakai.umusync.secure.UMUSecureInterceptor</value>
@@ -23,14 +22,6 @@
     	<property name="toolPrefix" value="umusync."/>
     	<property name="toolPermissions" ref="umusync.permissionList"/>
     </bean>
-    
-    
-    <!-- Interfaces -->
-    <util:list id="umusync.proxyInterfaces">
-    	<value>umu.sakai.umusync.api.ISyncManager</value>
-    	<value>umu.sakai.umujobs.api.IJob</value>
-    </util:list>
-    
     
     <!-- Permisos para esta tool -->
     <util:list id="umusync.permissionList">

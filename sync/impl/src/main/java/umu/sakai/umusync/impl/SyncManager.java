@@ -13,6 +13,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,9 +38,10 @@ import org.sakaiproject.site.api.SiteService;
 import org.sakaiproject.site.api.ToolConfiguration;
 import org.sakaiproject.tool.api.Tool;
 import org.sakaiproject.tool.api.ToolManager;
+import org.sakaiproject.tool.api.Session;
+import org.sakaiproject.tool.api.SessionManager;
 
 import umu.sakai.kernel.api.HasPermission;
-import umu.sakai.umujobs.api.IJob;
 import umu.sakai.umusync.api.ISyncManager;
 import umu.sakai.umusync.api.dao.ICriteria;
 import umu.sakai.umusync.api.dao.IListString;
@@ -46,9 +51,12 @@ import umu.sakai.umusync.dao.Criteria;
 import umu.sakai.umusync.dao.Page;
 import umu.sakai.umusync.dao.Task;
 
-public class SyncManager implements ISyncManager, IJob {
+public class SyncManager implements ISyncManager, Job {
 
 	private static Log log = LogFactory.getLog(SyncManager.class);
+
+	// User who execute sync tasks
+	private final static String SYNC_USER = "admin";
 
 	// Sakai Services
 	protected SiteService siteService;
@@ -56,6 +64,8 @@ public class SyncManager implements ISyncManager, IJob {
 	protected ToolManager toolManager;
 	protected FunctionManager functionManager;
 	protected ServerConfigurationService serverConfigurationService;
+	protected SessionManager sessionManager;
+	protected Session sakaiSession;
 
 	private static final String IGNORE_FUNCTIONS_PROPERTY = "umusync.ignore.functions";
 	private static final String DEFAULT_IGNORE_FUNCTIONS_VALUE = "annc.all.groups,annc.delete.any,annc.delete.own,annc.new,annc.read,annc.read.drafts,annc.revise.any,annc.revise.own,asn.all.groups,asn.delete,asn.grade,asn.new,asn.read,asn.receive.notifications,asn.revise,asn.share.drafts,asn.submit,calendar.all.groups,calendar.delete.any,calendar.delete.own,calendar.import,calendar.new,calendar.read,calendar.revise.any,calendar.revise.own,calendar.subscribe,chat.delete.any,chat.delete.channel,chat.delete.own,chat.new,chat.new.channel,chat.read,chat.revise.channel,content.all.groups,content.delete.any,content.delete.own,content.hidden,content.new,content.read,content.revise.any,content.revise.own,poll.add,poll.deleteAny,poll.deleteOwn,poll.editAny,poll.editOwn,poll.vote,rwiki.admin,rwiki.create,rwiki.read,rwiki.superadmin,rwiki.update";
@@ -102,6 +112,14 @@ public class SyncManager implements ISyncManager, IJob {
 	public void setServerConfigurationService(
 			ServerConfigurationService serverConfigurationService) {
 		this.serverConfigurationService = serverConfigurationService;
+	}
+	
+	public void setSessionManager(SessionManager sessionManager) {
+		this.sessionManager = sessionManager;
+	}
+
+	public SessionManager getSessionManager() {
+		return sessionManager;
 	}
 
 	/* Consultas DAO */
@@ -318,6 +336,31 @@ public class SyncManager implements ISyncManager, IJob {
 		}
 	}
 
+	// Quartz JOB
+	public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+		try {
+			loginToSakai();
+			doit();
+		} catch (Throwable t) {
+			log.error("Execution: "+t);
+			throw new JobExecutionException(t.toString());
+		} finally {
+			logoutFromSakai();
+		}
+	}
+	
+	protected void loginToSakai() {
+		sakaiSession = getSessionManager().getCurrentSession();
+		sakaiSession.setUserId(SYNC_USER);
+		sakaiSession.setUserEid(SYNC_USER);
+		getAuthzGroupService().refreshUser(SYNC_USER);
+
+	}
+
+	protected void logoutFromSakai() {
+		sakaiSession.invalidate();
+	}
+	
 	// Job Scheduler: can execute if have an admin session
 	@HasPermission(isAdmin = true)
 	public void doit() throws Throwable {
@@ -339,7 +382,7 @@ public class SyncManager implements ISyncManager, IJob {
 
 	
 	/**
-	 * Para ejecutar este m"todo debes de tener sesi"n de admin. 
+	 * Para ejecutar este metodo debes de tener sesion de admin. 
 	 */
 
 	@HasPermission(isAdmin = true)
