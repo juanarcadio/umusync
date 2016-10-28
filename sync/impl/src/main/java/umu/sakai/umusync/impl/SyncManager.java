@@ -41,7 +41,7 @@ import org.sakaiproject.tool.api.ToolManager;
 import org.sakaiproject.tool.api.Session;
 import org.sakaiproject.tool.api.SessionManager;
 
-import umu.sakai.kernel.api.HasPermission;
+import umu.sakai.umusync.api.secure.HasPermission;
 import umu.sakai.umusync.api.ISyncManager;
 import umu.sakai.umusync.api.dao.ICriteria;
 import umu.sakai.umusync.api.dao.IListString;

@@ -7,7 +7,7 @@ import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import umu.sakai.kernel.api.IUMUSecureInterceptor;
+import umu.sakai.umusync.api.secure.IUMUSecureInterceptor;
 
 public class UMUSecureJspMap implements Map {
 

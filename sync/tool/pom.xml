@@ -35,10 +35,6 @@
 			<artifactId>sakai-kernel-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>umu.sakai-contrib.kernel</groupId>
-			<artifactId>sakai-umukernel-api</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>umu.sakai-contrib.umusync</groupId>
 			<artifactId>umusync-api</artifactId>
 			<version>${project.version}</version>

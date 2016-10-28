@@ -29,6 +29,7 @@
           <artifactId>umusync-impl</artifactId>
           <version>${project.version}</version>
           <scope>runtime</scope>
-      </dependency>	  
+      </dependency>	
    </dependencies>
+
 </project>

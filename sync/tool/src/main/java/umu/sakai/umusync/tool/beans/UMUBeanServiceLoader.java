@@ -3,14 +3,14 @@ package umu.sakai.umusync.tool.beans;
 import java.io.Serializable;
 
 import umu.sakai.umusync.tool.validator.Validable;
-import umu.sakai.kernel.api.UMUServiceLoader;
+import umu.sakai.umusync.api.secure.UMUServiceLoader;
 
 public class UMUBeanServiceLoader extends UMUServiceLoader implements Validable, Serializable {
 
 	private static final long serialVersionUID = 1386888594369535951L;
 
 	public UMUSecureJspMap getHasPermission() { 
-		return (UMUSecureJspMap)this.getService("umu.sakai.kernel.secure.UMUSecureJSP"); 
+		return (UMUSecureJspMap)this.getService("umu.sakai.umusync.api.secure.UMUSecureJSP"); 
 	}
 	
 	public Class getDaoClass(String beanProperty) {

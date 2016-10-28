@@ -32,6 +32,7 @@ import org.sakaiproject.tool.api.ToolManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -42,15 +43,19 @@ import umu.sakai.umusync.api.dao.ICriteria;
 import umu.sakai.umusync.api.dao.IListString;
 import umu.sakai.umusync.api.dao.IPage;
 import umu.sakai.umusync.api.dao.ITask;
-import umu.sakai.umutests.UMUTest;
 
-@ContextConfiguration(locations={"classpath:umu/sakai/umutests/components.xml","file:../pack/src/webapp/WEB-INF/components.xml"})
-public class TestSyncManager extends UMUTest {
+// Test components are in src/test/resources
+@ContextConfiguration(locations={"classpath:umu/sakai/umusync/test/components.xml", "file:../pack/src/webapp/WEB-INF/components.xml"})
+public class TestSyncManager extends AbstractTransactionalTestNGSpringContextTests {
 	
 	private static Log log = LogFactory.getLog(TestSyncManager.class);
 	
 	@Autowired
 	@Qualifier("umu.sakai.umusync.api.ISyncManager")
+	protected ISyncManager testSecureSyncManager;
+	
+	@Autowired
+	@Qualifier("umu.sakai.umusync.api.ISyncManagerTarget")
 	protected ISyncManager testSyncManager;
 
 	@Autowired
@@ -504,9 +509,6 @@ public class TestSyncManager extends UMUTest {
 			Mockito.when(ss.getSites(SiteService.SelectionType.ANY, "asignaturaGrado", null, null, SiteService.SortType.NONE, null)).thenReturn(sitiosAsignaturaGrado);
 			Mockito.when(ss.getSites(SiteService.SelectionType.ANY, "permissionTest", null, null, SiteService.SortType.NONE, null)).thenReturn(permissionTestSites);
 			Mockito.when(ss.getSites(SiteService.SelectionType.ANY, null, null, null, SiteService.SortType.NONE, null)).thenReturn(allSites);
-
-
-	
 			
 		} catch (Exception e) {
 			log.error("init!!!:"+e);
@@ -1121,7 +1123,24 @@ public class TestSyncManager extends UMUTest {
 		testSyncManager.doit();
 	}
 
+	/**
+	 * TESTS SECURE COMPONENT (used in tool)
+	 */
 	
+	@Test
+	public void testSecureComponentInitialized() {
+		Assert.assertNotNull(testSecureSyncManager);
+	}
+	
+	@Test (expectedExceptions = {java.lang.SecurityException.class})
+	public void testSecureComponentUnauthorized() {
+		testSecureSyncManager.getTasks();
+	}
+	
+	@Test (expectedExceptions = {java.lang.SecurityException.class})
+	public void testSecureComponentJobUnauthorized() throws Throwable {
+		testSecureSyncManager.doit();
+	}
 	
 	/**
 	 *  TESTS DE GETS FROM SERVICES

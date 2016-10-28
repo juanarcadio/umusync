@@ -12,13 +12,17 @@
 	</organization>
 	<inceptionYear>2011</inceptionYear>
 	<packaging>pom</packaging>
-
+	
 	<parent>
 		<artifactId>umusync</artifactId>
 		<groupId>umu.sakai-contrib</groupId>
 		<version>11-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
+
+	<properties>
+		<deploy.target>shared</deploy.target>
+	</properties>
 
 	<modules>
 		<module>tool</module>
@@ -32,12 +36,6 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>umu.sakai-contrib.kernel</groupId>
-				<artifactId>sakai-umukernel-api</artifactId>
-				<version>${project.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
 				<version>${umu.testng.version}</version>
@@ -46,12 +44,17 @@
 		</dependencies>
 	</dependencyManagement>
 	
+	<!-- LIBs to deploy in shared -->
 	<dependencies>
 		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>${sakai.quartz.version}</version>
-			<scope>provided</scope>		
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${umu.hibernate.entitymanager.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${umu.hibernate.validator.version}</version>
 		</dependency>
 	</dependencies>
 

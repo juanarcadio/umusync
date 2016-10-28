@@ -29,10 +29,6 @@
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>umu.sakai-contrib.kernel</groupId>
-			<artifactId>sakai-umukernel-api</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>

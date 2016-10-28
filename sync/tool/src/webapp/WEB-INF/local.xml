@@ -9,7 +9,7 @@
 
 	<util:map id="umusyncServices">
 	    <entry key="umu.sakai.umusync.api.ISyncManager"><ref bean="umu.sakai.umusync.api.ISyncManager"/></entry>
-	    <entry key="umu.sakai.kernel.secure.UMUSecureJSP"><ref bean="umu.sakai.umusync.UMUSecureJSP"/></entry>
+	    <entry key="umu.sakai.umusync.api.secure.UMUSecureJSP"><ref bean="umu.sakai.umusync.UMUSecureJSP"/></entry>
 	    <entry key="org.sakaiproject.util.ResourceLoader"><ref bean="umu.sakai.umusync.ResourceLoader"/></entry>	    
 	</util:map>
 

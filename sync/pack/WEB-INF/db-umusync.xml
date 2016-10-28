@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   	<bean id="umu.sakai.umusync.api.ISyncManagerTarget"
+   		depends-on="org.sakaiproject.site.api.SiteService,
+   					org.sakaiproject.authz.api.AuthzGroupService,
+   					org.sakaiproject.tool.api.SessionManager,
+   					org.sakaiproject.tool.api.ToolManager,
+   					org.sakaiproject.authz.api.FunctionManager,
+   					org.sakaiproject.component.api.ServerConfigurationService"	
+   		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+	    <property name="transactionManager" ref="umusync-transactionManager"/>
+	    <property name="target">
+		    <bean class="umu.sakai.umusync.impl.SyncManager">
+		    	<property name="siteService"><ref bean="org.sakaiproject.site.api.SiteService"/></property>
+				<property name="authzGroupService"><ref bean="org.sakaiproject.authz.api.AuthzGroupService"/></property>
+				<property name="sessionManager"><ref bean="org.sakaiproject.tool.api.SessionManager"/></property>
+				<property name="toolManager"><ref bean="org.sakaiproject.tool.api.ToolManager"/></property>
+				<property name="functionManager"><ref bean="org.sakaiproject.authz.api.FunctionManager"/></property>
+				<property name="serverConfigurationService"><ref bean="org.sakaiproject.component.api.ServerConfigurationService"/></property>				
+			</bean>
+	    </property>
+	    <property name="transactionAttributes">
+	        <props>
+	        	<prop key="add*">PROPAGATION_REQUIRED, -Throwable</prop>
+		        <prop key="del*">PROPAGATION_REQUIRED</prop>
+            	<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+            	<prop key="syncSites">PROPAGATION_REQUIRED</prop>
+            	<prop key="doit">PROPAGATION_REQUIRED</prop>
+	        </props>
+	    </property>
+	</bean>
+   
+   	<bean id="umusync-transactionManager"
+   		depends-on="umusync-entityManagerFactory,
+   					javax.sql.DataSource"		
+   		class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="umusync-entityManagerFactory"/>
+        <property name="dataSource" ref="javax.sql.DataSource"/>
+    </bean>
+   
+	<bean id="umusync-entityManagerFactory"
+		depends-on="javax.sql.DataSource"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+ 		<property name="dataSource" ref="javax.sql.DataSource"/>
+ 	 	<property name="persistenceXmlLocation" value="classpath:/META-INF/umusync-persistence.xml"/>
+ 	 	<property name="persistenceUnitName" value="umusync-jpa"/>
+   	</bean>
+ 
+</beans>

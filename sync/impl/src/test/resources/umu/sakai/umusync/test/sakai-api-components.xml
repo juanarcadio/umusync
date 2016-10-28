@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Mocks de Servicios de Sakai -->
+	<bean id="org.sakaiproject.user.api.UserDirectoryService" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.user.api.UserDirectoryService</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.site.api.SiteService" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.site.api.SiteService</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.tool.api.ToolManager" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.tool.api.ToolManager</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.authz.api.AuthzGroupService" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.authz.api.AuthzGroupService</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.tool.api.SessionManager" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.tool.api.SessionManager</value></constructor-arg>
+	</bean>	
+	<bean id="org.sakaiproject.component.api.ServerConfigurationService" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.component.api.ServerConfigurationService</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.authz.api.FunctionManager" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.authz.api.FunctionManager</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.authz.api.SecurityService" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.authz.api.SecurityService</value></constructor-arg>
+	</bean>	
+
+	<bean id="org.sakaiproject.api.app.scheduler.SchedulerManager" class="umu.sakai.umusync.impl.SakaiMockService" factory-method="createMock">
+  		<constructor-arg><value>org.sakaiproject.api.app.scheduler.SchedulerManager</value></constructor-arg>
+	</bean>	
+
+</beans>

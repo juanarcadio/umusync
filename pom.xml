@@ -19,8 +19,6 @@
 
 	<modules>
 		<module>sync</module>
-		<module>tests</module>
-		<module>kernel</module>
 	</modules>
 
 	<scm>
@@ -86,6 +84,7 @@
 		<umu.richfaces.version>4.3.7.Final</umu.richfaces.version>
 		<umu.taglibs.version>1.0.4</umu.taglibs.version>
 		<umu.testng.version>6.9.4</umu.testng.version>
+		<umu.mockito.version>1.8.5</umu.mockito.version>
 	</properties>
 
 	<build>
