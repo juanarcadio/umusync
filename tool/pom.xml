@@ -12,7 +12,7 @@
 	<packaging>war</packaging>
 	<parent>
 		<artifactId>umusync</artifactId>
-		<groupId>umu.sakai-contrib.umusync</groupId>
+		<groupId>umu.sakai-contrib</groupId>
 		<version>11-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
@@ -35,7 +35,7 @@
 			<artifactId>sakai-kernel-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>umu.sakai-contrib.umusync</groupId>
+			<groupId>umu.sakai-contrib</groupId>
 			<artifactId>umusync-api</artifactId>
 			<version>${project.version}</version>
 			<scope>provided</scope>
@@ -138,7 +138,6 @@
 			<artifactId>testng</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>

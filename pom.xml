@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.sakaiproject</groupId>
 		<artifactId>master</artifactId>
 		<version>11-SNAPSHOT</version>
-	</parent>
+	</parent>	
 	<name>Umusync Tool</name>
 	<groupId>umu.sakai-contrib</groupId>
 	<artifactId>umusync</artifactId>
 	<version>11-SNAPSHOT</version>
+	
 	<organization>
 		<name>Universidad de Murcia</name>
 		<url>http://www.um.es/</url>
-	</organization>
-	<inceptionYear>2011</inceptionYear>
+	</organization>	
+	<inceptionYear>2011</inceptionYear>	
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>sync</module>
+		<module>tool</module>
+		<module>api</module>
+		<module>dao</module>
+		<module>impl</module>
+		<module>pack</module>
+		<module>help</module>
 	</modules>
 
 	<scm>
 		<connection>scm:git:git@github.com:juanarcadio/umusync.git</connection>
 		<developerConnection>scm:git:git@github.com:juanarcadio/umusync.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+	  	<tag>HEAD</tag>
+	</scm>
 
 	<repositories>
 		<repository>
@@ -76,17 +85,6 @@
 		</repository>		
 	</repositories>
 
-	<properties>
-		<umu.hibernate.entitymanager.version>3.6.10.Final</umu.hibernate.entitymanager.version> 
-		<umu.hibernate.validator.version>3.1.0.GA</umu.hibernate.validator.version>
-		<umu.jsf.version>1.1.02</umu.jsf.version>
-		
-		<umu.richfaces.version>4.3.7.Final</umu.richfaces.version>
-		<umu.taglibs.version>1.0.4</umu.taglibs.version>
-		<umu.testng.version>6.9.4</umu.testng.version>
-		<umu.mockito.version>1.8.5</umu.mockito.version>
-	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -117,5 +115,41 @@
 	    	</plugin>
 		</plugins>
 	</build>
+	
+	<properties>
+		<umu.hibernate.entitymanager.version>3.6.10.Final</umu.hibernate.entitymanager.version> 
+		<umu.hibernate.validator.version>3.1.0.GA</umu.hibernate.validator.version>		
+		<umu.richfaces.version>4.3.7.Final</umu.richfaces.version>
+		<umu.testng.version>6.9.4</umu.testng.version>
+		<umu.mockito.version>1.8.5</umu.mockito.version>
+		
+		<!-- To deploy hibernate in shared -->
+		<deploy.target>shared</deploy.target>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${umu.testng.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<!-- LIBs to deploy in shared -->
+	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${umu.hibernate.entitymanager.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${umu.hibernate.validator.version}</version>
+		</dependency>
+	</dependencies>
 
 </project>

@@ -17,14 +17,14 @@
 	<!-- the base is parent -->
 	<parent>
 		<artifactId>umusync</artifactId>
-		<groupId>umu.sakai-contrib.umusync</groupId>
+		<groupId>umu.sakai-contrib</groupId>
 		<version>11-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>umu.sakai-contrib.umusync</groupId>
+			<groupId>umu.sakai-contrib</groupId>
 			<artifactId>umusync-api</artifactId>
 			<version>${project.version}</version>
 			<scope>provided</scope>
